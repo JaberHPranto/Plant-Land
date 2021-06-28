@@ -1,14 +1,12 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Footer from './components/Ecommerce/Footer';
 // import LandingPage from "./pages/LandingPage";
-import Header from './components/Ecommerce/Header';
+import EcommercePage from './pages/EcommercePage';
+import './styles/bootstrap.min.css';
 
 function App() {
   return (
     <div>
-      <Header />
-      <main>This is Pro Shop</main>
-      <Footer />
+      <EcommercePage />
     </div>
   );
 }
