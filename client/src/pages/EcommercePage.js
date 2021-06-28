@@ -2,6 +2,7 @@ import React from 'react';
 import { Container } from 'react-bootstrap';
 import Footer from "../components/Ecommerce/Footer";
 import Header from "../components/Ecommerce/Header";
+import HomeScreen from '../components/Ecommerce/Screen/HomeScreen';
 import '../styles/ecommerce.css';
 
 function EcommercePage() {
@@ -10,9 +11,9 @@ function EcommercePage() {
             <Header />
             <main>
                 <Container>
-                    <h1>This is Pro Shop</h1>
+                    <HomeScreen />
                 </Container>
-                </main>
+            </main>
             <Footer />
         </div>
     )
