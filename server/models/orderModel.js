@@ -25,6 +25,7 @@ const orderSchema = mongoose.Schema({
         postalCode: { type: String, required: true },
         district: { type: String, required: true },
     },
+
     paymentMethod: {
         type: String,
         required:true
@@ -35,6 +36,7 @@ const orderSchema = mongoose.Schema({
         updateTime: { type: String },
         emailAddress: { type: String },
     },
+
     taxPrice: {
         type: Number,
         required: true,
@@ -50,6 +52,7 @@ const orderSchema = mongoose.Schema({
         required: true,
         default:0.0
     },
+    
     isPaid: {
         type: Boolean,
         required: true,

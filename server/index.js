@@ -2,6 +2,7 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import express from 'express';
 import connectDB from './config/db.js';
+import productRoutes from './routes/productRoutes.js';
 
 const app = express()
 dotenv.config()
@@ -16,6 +17,9 @@ app.use(cors())
 app.get("/",(req,res) => {
     res.send("Hello world")
 })
+
+//routes
+app.use("/api/products",productRoutes)
 
 // connect to database
 connectDB()
