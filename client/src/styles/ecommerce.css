@@ -1,0 +1,17 @@
+main {
+  min-height: 80vh;
+  margin-top: 1.5rem;
+}
+.rating {
+  display: flex;
+}
+.rating_text {
+  margin-left: 1rem;
+}
+.product_heading h2 {
+  font-family: "Asap";
+}
+.product_price {
+  font-size: 3rem;
+  font-family: "Open Sans";
+}
