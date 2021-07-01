@@ -10,7 +10,7 @@ import Rating from '../Rating'
 
 function ProductScreen({ match,history  }) {
     
-    const [qty, setQty] = useState(0)
+    const [qty, setQty] = useState(1)
     const dispatch = useDispatch()
 
     const productDetails = useSelector(state => state.productDetails)
@@ -66,7 +66,7 @@ function ProductScreen({ match,history  }) {
                                                     value={qty} onChange={(e) => setQty(e.target.value)}
                                                 >
                                                     {[...Array(product.countInStock).keys()].map(p => (
-                                                        <option key={p+1} value={p+1} >{p+1}</option>
+                                                        <option key={p+1} value={p+1}>{p+1}</option>
                                                     ))}
                                                 </FormControl>
                                             </Col>
