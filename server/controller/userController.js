@@ -1,7 +1,10 @@
 import bcrypt from 'bcrypt';
+import asyncHandler from 'express-async-handler';
 import jwt from 'jsonwebtoken';
 import User from '../models/userModel.js';
 
+
+// @ User Login
 export const authUser = async (req, res) => {
     // need data from frontend
     const { email, password } = req.body;
@@ -27,3 +30,18 @@ export const authUser = async (req, res) => {
         res.status(500).json({ message: "Something went wrong" })
     }
 }
+
+
+// @ User Profile 
+export const getUserProfile = asyncHandler(async (req, res) => {
+    const user_id = req.userId
+    if (user_id) {
+        const user = await User.findById({_id:user_id})
+        res.status(200).json({user})
+
+    } else {
+        res.status(401)
+        throw new Error("Not authorized to view profile")
+    }
+
+})

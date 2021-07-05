@@ -1,9 +1,11 @@
 import express from 'express'
-import { authUser } from '../controller/userController.js'
+import { authUser, getUserProfile } from '../controller/userController.js'
+import { isLoggedIn } from '../middlewares/authMiddleware.js'
 
 const router = express.Router()
 
-router.post("/login",authUser)
+router.post("/login", authUser)
+router.route("/profile").get(isLoggedIn, getUserProfile)
 
 
 export default router
