@@ -1,3 +1,4 @@
+import bcrypt from 'bcrypt'
 import mongoose from 'mongoose'
 
 const userSchema = mongoose.Schema({
@@ -21,6 +22,16 @@ const userSchema = mongoose.Schema({
     },
 }, {
     timestamps:true
+})
+
+// for hashing password before saved to database
+userSchema.pre('save', async function (next) {
+    // for not generate a new hash if password field in not updated
+    if (!this.isModified('password')) {
+        next()
+    }
+    const salt = await bcrypt.genSalt(10)
+    this.password = await bcrypt.hash(this.password,salt)
 })
 
 const User = mongoose.model("User", userSchema)

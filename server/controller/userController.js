@@ -32,6 +32,38 @@ export const authUser = async (req, res) => {
 }
 
 
+// @ User Registration 
+export const registerUser = async (req,res) => {
+    const { name, email, password, confirmPassword } = req.body;
+
+    try {
+        // check whether this email already exist or not
+        const existingUser = await User.findOne({ email })
+        if (existingUser) return res.status(404).json({ message: "User already exist" })
+        
+        // check the password
+        if (password !== confirmPassword) return res.status(404).json({ message: "Passwords don't match" })
+        
+        // password is hashed from the user model
+
+        // Now create the user
+        const result = await User.create({name,email,password})
+        
+        // generate the token
+        const token = jwt.sign({ email: result.email, id: result._id },
+            process.env.JWT_SECRET,
+            { expiresIn: '1h' })
+        
+        res.status(201).json({user:result,token})
+            
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({message:"Something went wrong"})
+    }
+
+} 
+
+
 // @ User Profile 
 export const getUserProfile = asyncHandler(async (req, res) => {
     const user_id = req.userId
