@@ -3,6 +3,7 @@ import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import { LinkContainer } from 'react-router-bootstrap'
 import { logout } from '../../redux/actions/userActions'
+import { toastErrorMessage } from './ToastMessage'
 
 
 function Header() {
@@ -11,6 +12,7 @@ function Header() {
 
     const handleLogout = () => {
         dispatch(logout())
+        toastErrorMessage("You're logged out")
     }
     
     return (
