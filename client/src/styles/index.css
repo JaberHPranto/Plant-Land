@@ -21,3 +21,7 @@ code {
   font-family: "Lato", source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.dropdown-item:hover {
+  background-color: #ddd;
+}
