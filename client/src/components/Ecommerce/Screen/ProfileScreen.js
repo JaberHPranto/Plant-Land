@@ -27,13 +27,19 @@ function ProfileScreen({location,history}) {
             history.push("/login")
         }
         else {
-
-            if (!user.name) {            
-                dispatch(getUserDetails('profile'))
-            }
-            else {
-                setEmail(user.email)
-                setName(user.name)
+            // for google users
+            if (userInfo.token.length > 500) {
+            setEmail(userInfo.user.email)
+            setName(userInfo.user.name)
+                
+            } else {
+                if (!user.name) {            
+                        dispatch(getUserDetails('profile'))
+                    }
+                    else {
+                        setEmail(user.email)
+                        setName(user.name)
+                    }
             }
         }
     }, [history,userInfo,dispatch,user,location])

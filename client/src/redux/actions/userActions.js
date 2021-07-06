@@ -36,6 +36,29 @@ export const login = (email,password) => async (dispatch) => {
     
 }
 
+export const googleLogin = (data) => async (dispatch) => {
+    try {
+        dispatch({
+            type:USER_LOGIN_REQUEST
+        })
+
+        dispatch({
+            type: USER_LOGIN_SUCCESS,
+            payload:data
+        })
+
+        localStorage.setItem('userInfo',JSON.stringify(data))
+        
+    } catch (error) {
+        console.log(error);
+        dispatch({
+            type: USER_LOGIN_FAIL,
+            payload: error.response && error.response.data.message ? error.response.data.message : error.message
+            
+        })
+    }
+}
+
 
 export const logout = () => (dispatch) => {
     localStorage.removeItem('userInfo')
