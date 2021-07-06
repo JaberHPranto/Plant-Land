@@ -7,6 +7,7 @@ import CartScreen from '../components/Ecommerce/Screen/CartScreen';
 import HomeScreen from '../components/Ecommerce/Screen/HomeScreen';
 import LoginScreen from '../components/Ecommerce/Screen/LoginScreen';
 import ProductScreen from '../components/Ecommerce/Screen/ProductScreen';
+import ProfileScreen from '../components/Ecommerce/Screen/ProfileScreen';
 import RegisterScreen from '../components/Ecommerce/Screen/RegisterScreen';
 import '../styles/ecommerce.css';
 
@@ -19,6 +20,7 @@ function EcommercePage() {
                     <Route path="/" exact component={HomeScreen} />
                     <Route path="/login" component={LoginScreen} />
                     <Route path="/register" component={RegisterScreen} />
+                    <Route path="/profile" component={ProfileScreen} />
                     <Route path="/product/:id" component={ProductScreen} />
                     <Route path="/cart/:id?" component={CartScreen} />
                 </Container>

@@ -69,7 +69,7 @@ export const getUserProfile = asyncHandler(async (req, res) => {
     const user_id = req.userId
     if (user_id) {
         const user = await User.findById({_id:user_id})
-        res.status(200).json({user})
+        res.status(200).json(user)
 
     } else {
         res.status(401)
@@ -80,7 +80,6 @@ export const getUserProfile = asyncHandler(async (req, res) => {
 
 
 // @ Update User Profile
-// @ User Profile 
 export const updateUserProfile = asyncHandler(async (req, res) => {
     const user_id = req.userId
     if (user_id) {
@@ -94,7 +93,7 @@ export const updateUserProfile = asyncHandler(async (req, res) => {
 
         const updatedUser = await user.save()
 
-        res.status(200).json({updatedUser})
+        res.status(200).json(updatedUser)
 
     } else {
         res.status(401)
