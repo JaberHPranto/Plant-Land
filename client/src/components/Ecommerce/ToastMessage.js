@@ -4,11 +4,15 @@ import 'react-toastify/dist/ReactToastify.css'
 toast.configure()
 
 export const toastSuccessMessage = (message) => {
-    toast.success(message)
+    toast.success(message,{
+        autoClose: 3000,
+    })
 }
 
-export const toastWarningMessage = (message) => {
-    toast.warn(message)
+export const toastInfoMessage = (message) => {
+    toast.info(message,{
+        autoClose: 4000,
+    })
 }
 
 export const toastErrorMessage = (message) => {

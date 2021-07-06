@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { Button, Col, Form, Row } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
-import { getUserDetails } from '../../../redux/actions/userActions'
+import { getUserDetails, updateUserProfile } from '../../../redux/actions/userActions'
+import Loader from '../Loader'
+import Message from '../Message'
+import { toastSuccessMessage } from '../ToastMessage'
 
 
 function ProfileScreen({location,history}) {
@@ -37,12 +40,16 @@ function ProfileScreen({location,history}) {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        // dispatch(getUserDetails('profile'))
+        dispatch(updateUserProfile({ id: user._id, email, name, password }))
+        toastSuccessMessage("Your profile has been updated")
     }
 
     return (
         <Row>
-            <Col md={3}>
+            <Col md={4}>
+                <h2>User Profile</h2>
+                {error && <Message variant='danger'>{error}</Message>}
+                {loading && <Loader />}
                 <Form onSubmit={handleSubmit}>
                 
                 <Form.Group controlId="name">
@@ -68,7 +75,7 @@ function ProfileScreen({location,history}) {
                 <Button type='submit' variant='primary'>Update</Button>
             </Form>
             </Col>
-            <Col md={9} ><h1>My Orders</h1></Col>
+            <Col md={8} ><h1>My Orders</h1></Col>
         </Row>
     )
 }
