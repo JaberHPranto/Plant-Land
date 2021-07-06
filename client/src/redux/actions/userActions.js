@@ -22,8 +22,6 @@ export const login = (email,password) => async (dispatch) => {
             payload:data
         })
 
-        console.log(data.user);
-
         localStorage.setItem('userInfo',JSON.stringify(data))
         
     } catch (error) {
@@ -46,6 +44,7 @@ export const logout = () => (dispatch) => {
     })
 }
 
+
 export const register = (name,email,password,confirmPassword) => async (dispatch) => {
 
     try {
@@ -66,8 +65,6 @@ export const register = (name,email,password,confirmPassword) => async (dispatch
             type: USER_REGISTER_SUCCESS,
             payload:data
         })
-
-        console.log(data.user);
         
     } catch (error) {
         console.log(error);

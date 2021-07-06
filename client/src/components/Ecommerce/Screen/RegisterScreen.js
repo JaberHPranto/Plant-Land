@@ -2,11 +2,13 @@ import React, { useEffect, useState } from 'react'
 import { Button, Col, Form, Row } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
+import { toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 import { register } from '../../../redux/actions/userActions'
 import FormContainer from '../FormContainer'
 import Loader from '../Loader'
 import Message from '../Message'
-
+toast.configure()
 
 function RegisterScreen({location,history}) {
 
@@ -23,6 +25,7 @@ function RegisterScreen({location,history}) {
     
     useEffect(() => {
         if (userInfo) {
+            toast.success("Account created successfully. Please login to see profile", {autoClose: 3000,})
             history.push("/login")
         }
     }, [history,redirect,userInfo])
