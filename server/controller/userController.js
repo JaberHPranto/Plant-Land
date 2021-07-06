@@ -77,3 +77,29 @@ export const getUserProfile = asyncHandler(async (req, res) => {
     }
 
 })
+
+
+// @ Update User Profile
+// @ User Profile 
+export const updateUserProfile = asyncHandler(async (req, res) => {
+    const user_id = req.userId
+    if (user_id) {
+        const user = await User.findById({_id:user_id})
+        user.name = req.body.name || user.name
+        user.email = req.body.email || user.email
+
+        if (req.body.password) {
+            user.password = req.body.password
+        }
+
+        const updatedUser = await user.save()
+
+        res.status(200).json({updatedUser})
+
+    } else {
+        res.status(401)
+        throw new Error("Not authorized to view profile")
+    }
+
+})
+
