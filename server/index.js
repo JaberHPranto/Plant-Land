@@ -1,6 +1,7 @@
 import cors from 'cors';
 import dotenv from 'dotenv';
 import express from 'express';
+import morgan from 'morgan';
 import connectDB from './config/db.js';
 import { errorHandler, notFound } from './middlewares/errorMiddleware.js';
 import productRoutes from './routes/productRoutes.js';
@@ -9,6 +10,10 @@ import userRoutes from './routes/userRoutes.js';
 
 const app = express();
 dotenv.config();
+
+if (process.env.NODE_ENV === 'development') {
+  app.use(morgan('dev'))
+}
 
 // middlewares
 app.use(express.json({ limit: "30mb", extended: true }));
