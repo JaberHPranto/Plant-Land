@@ -11,7 +11,7 @@ export const toastSuccessMessage = (message) => {
 
 export const toastInfoMessage = (message) => {
     toast.info(message,{
-        autoClose: 4000,
+        autoClose: 3000,
     })
 }
 

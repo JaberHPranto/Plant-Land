@@ -2,15 +2,12 @@ import React, { useEffect, useState } from 'react'
 import { Button, Col, Form, Row } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { toast } from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.css'
 import { login } from '../../../redux/actions/userActions'
 import FormContainer from '../FormContainer'
 import GoogleAuth from '../GoogleAuth'
 import Loader from '../Loader'
 import Message from '../Message'
-
-toast.configure()
+import { toastInfoMessage } from '../ToastMessage'
 
 function LoginScreen({location,history}) {
 
@@ -25,7 +22,7 @@ function LoginScreen({location,history}) {
     
     useEffect(() => {
         if (userInfo) {
-            toast.info(`Hey, nice to see you back ${userInfo.user.name}`)
+            toastInfoMessage(`Hey, nice to see you back ${userInfo.user.name}`)
             history.push(redirect)
         }
     }, [history,redirect,userInfo])

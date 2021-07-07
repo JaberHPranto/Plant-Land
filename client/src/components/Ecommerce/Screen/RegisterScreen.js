@@ -6,6 +6,7 @@ import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import { register } from '../../../redux/actions/userActions'
 import FormContainer from '../FormContainer'
+import GoogleAuth from '../GoogleAuth'
 import Loader from '../Loader'
 import Message from '../Message'
 toast.configure()
@@ -65,6 +66,14 @@ function RegisterScreen({location,history}) {
 
                 <Button type='submit' variant='primary'>Sign Up</Button>
             </Form>
+
+            <Row>
+                <Col>Or</Col>
+            </Row>
+
+            <Row>
+                <Col> <GoogleAuth /> </Col>
+            </Row>
 
             <Row className="py-3">
                 <Col>
