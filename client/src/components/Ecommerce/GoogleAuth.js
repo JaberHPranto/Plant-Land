@@ -32,8 +32,9 @@ function GoogleAuth() {
             <GoogleLogin
                 clientId="194822757324-85cbm8js64av331n4ouf1aqr4ot4veju.apps.googleusercontent.com"
                 render={(renderProps) => (
-                    <Button color="primary"
+                    <Button 
                         onClick={renderProps.onClick} disabled={renderProps.disabled}
+                        className="google-btn login-with-google-btn" 
                     >
                         Google Sign in
                     </Button>

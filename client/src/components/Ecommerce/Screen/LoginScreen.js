@@ -34,24 +34,30 @@ function LoginScreen({location,history}) {
 
     return (
         <FormContainer>
-            <h1>Sign In</h1>
+            <h1 className='text-center'>Sign In</h1>
             {error && <Message variant='danger'>{error}</Message>}
             {loading && <Loader />}
             <Form onSubmit={handleSubmit}>
-                <Form.Group controlId="email">
+                <Form.Group controlId="email" className='mb-3 mt-3'>
                     <Form.Label>Email Address</Form.Label>
                     <Form.Control type="email" placeholder="Enter email" value={email} onChange={(e)=> setEmail(e.target.value)} />
                 </Form.Group>
 
-                <Form.Group controlId="password">
+                <Form.Group controlId="password" className='mb-4'>
                     <Form.Label>Password</Form.Label>
                     <Form.Control type="password" placeholder="Enter password" value={password} onChange={(e)=> setPassword(e.target.value)} />
                 </Form.Group>
 
-                <Button type='submit' variant='primary'>Sign In</Button>
+                <Button type='submit' variant='primary' className="auth-btn mb-2" >Sign In</Button>
             </Form>
 
-            <GoogleAuth />
+            <Row>
+                <Col className="text-center my-1" ><h6>Or</h6></Col>
+            </Row>
+
+            <Row>
+                <Col> <GoogleAuth /> </Col>
+            </Row>
 
             <Row className="py-3">
                 <Col>
