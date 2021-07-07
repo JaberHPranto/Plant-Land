@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import { Button, Col, Form, Row } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
+import { useLocation } from 'react-router-dom'
 import { getUserDetails, updateUserProfile } from '../../../redux/actions/userActions'
 import Loader from '../Loader'
 import Message from '../Message'
 import { toastSuccessMessage } from '../ToastMessage'
 
 
-function ProfileScreen({location,history}) {
+function ProfileScreen({history}) {
 
     const [email, setEmail] = useState('')
     const [name, setName] = useState('')
@@ -15,6 +16,7 @@ function ProfileScreen({location,history}) {
     const [confirmPassword, setConfirmPassword] = useState('')
 
     const dispatch = useDispatch()
+    const location = useLocation()
 
     const userLogin = useSelector(state => state.userLogin)
     const {userInfo} = userLogin
@@ -42,7 +44,7 @@ function ProfileScreen({location,history}) {
                     }
             }
         }
-    }, [history,userInfo,dispatch,user,location])
+    }, [history,userInfo,dispatch,user,location,name])
 
     const handleSubmit = (e) => {
         e.preventDefault()

@@ -33,9 +33,9 @@ function Header() {
                         </LinkContainer> 
                             {userInfo ? (
                                 <NavDropdown title={userInfo.user.name} id="name" variant="success">
-                                    <LinkContainer to="/profile">
-                                        <NavDropdown.Item style={{backgroundColor: "red"}}>Profile</NavDropdown.Item>
-                                    </LinkContainer>
+                                    {/* <LinkContainer to="/profile"> */}
+                                        <NavDropdown.Item href="/profile">Profile</NavDropdown.Item>
+                                    {/* </LinkContainer> */}
                                     <NavDropdown.Item onClick={handleLogout}>Logout</NavDropdown.Item>
                                 </NavDropdown>
                             ) : (

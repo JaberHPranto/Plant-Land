@@ -2,11 +2,13 @@ import React from 'react'
 import { Button } from 'react-bootstrap'
 import { GoogleLogin } from 'react-google-login'
 import { useDispatch } from 'react-redux'
+import { useHistory } from 'react-router-dom'
 import { googleLogin } from '../../redux/actions/userActions'
 
-function GoogleAuth({ history }) {
+function GoogleAuth() {
     
     const dispatch = useDispatch()
+    const history = useHistory()
 
     const googleSuccess = async (res) => {
     // console.log(res);
