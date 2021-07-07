@@ -18,6 +18,7 @@ function EcommercePage() {
             <main>
                 <Container>
                     <Route path="/" exact component={HomeScreen} />
+                    <Route path="/search/:keyword" component={HomeScreen} />
                     <Route path="/login" component={LoginScreen} />
                     <Route path="/register" component={RegisterScreen} />
                     <Route path="/profile" component={ProfileScreen} />

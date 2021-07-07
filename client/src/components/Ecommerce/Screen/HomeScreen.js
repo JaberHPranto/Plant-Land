@@ -7,16 +7,18 @@ import Message from '../Message'
 import Product from '../Product'
 
 
-function HomeScreen() {
+function HomeScreen({match}) {
 
     const dispatch = useDispatch()
     const productList = useSelector(state => state.productList)
     const { loading, error, products } = productList
     
+    const keyword = match.params.keyword
+    console.log(keyword);
 
     useEffect(() => {
-        dispatch(fetchProducts())
-    }, [dispatch])
+        dispatch(fetchProducts(keyword))
+    }, [dispatch,keyword])
 
 
     return (

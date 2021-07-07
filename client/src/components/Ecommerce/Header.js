@@ -3,6 +3,7 @@ import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import { LinkContainer } from 'react-router-bootstrap'
 import { logout } from '../../redux/actions/userActions'
+import SearchBox from './SearchBox'
 import { toastErrorMessage } from './ToastMessage'
 
 
@@ -24,8 +25,10 @@ function Header() {
                     </LinkContainer>    
                 
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-                <Navbar.Collapse id="responsive-navbar-nav">
-                    <Nav className="me-auto">
+                    <Navbar.Collapse id="responsive-navbar-nav">
+                        
+                        <Nav className="me-auto">
+                            <SearchBox />
                     </Nav>
                     <Nav>
                         <LinkContainer to="/cart">
