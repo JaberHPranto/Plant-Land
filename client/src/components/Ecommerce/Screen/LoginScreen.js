@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { Button, Col, Form, Row } from 'react-bootstrap'
-import { GoogleLogin } from 'react-google-login'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
-import { googleLogin, login } from '../../../redux/actions/userActions'
+import { login } from '../../../redux/actions/userActions'
 import FormContainer from '../FormContainer'
+import GoogleAuth from '../GoogleAuth'
 import Loader from '../Loader'
 import Message from '../Message'
 
@@ -35,24 +35,6 @@ function LoginScreen({location,history}) {
         dispatch(login(email, password))
     }
 
-    const googleSuccess = async (res) => {
-        // console.log(res);
-        const user = res?.profileObj;
-        const token = res?.tokenId
-        
-        try {
-            const data = { user, token }
-            dispatch(googleLogin(data))
-            history.push("/")
-        } catch (error) {
-            console.log(error);
-        }
-  
-    }
-    const googleFailure = () => {
-        console.log("Google Sign in was unsuccessful. Try again later");
-    }
-
     return (
         <FormContainer>
             <h1>Sign In</h1>
@@ -72,19 +54,7 @@ function LoginScreen({location,history}) {
                 <Button type='submit' variant='primary'>Sign In</Button>
             </Form>
 
-            <GoogleLogin
-                clientId="194822757324-85cbm8js64av331n4ouf1aqr4ot4veju.apps.googleusercontent.com"
-                render={(renderProps) => (
-                    <Button color="primary"
-                        onClick={renderProps.onClick} disabled={renderProps.disabled}
-                    >
-                        Google Sign in
-                    </Button>
-                )}
-                onSuccess={googleSuccess}
-                onFailure={googleFailure}
-                cookiePolicy="single_host_origin"
-            />
+            <GoogleAuth />
 
             <Row className="py-3">
                 <Col>

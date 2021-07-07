@@ -10,13 +10,11 @@ const isLoggedIn = async (req, res, next) => {
         if (token && isCustomAuth) {
             decodedData = jwt.verify(token, process.env.JWT_SECRET)
             req.userId = decodedData?.id
-            console.log(req.userId);
         }
         else {
             // for google authentication
             decodedData = jwt.decode(token)
             req.userId = decodedData?.sub
-            console.log(req.userId);
         }
 
         next()
