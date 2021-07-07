@@ -22,10 +22,12 @@ function Rating({ value, text }) {
                 </span>
             </div>
 
-            <div className='rating_text'>
-                <span>{text ? `${text} reviews` : 'No reviews yet'}</span>
-            </div>
-            
+            {text !== 'hidden' && (
+                <div className='rating_text'>
+                    <span>{text ? `${text} reviews` : 'No reviews yet'}</span>
+                </div>
+            )}
+
         </div>
     )
 }
