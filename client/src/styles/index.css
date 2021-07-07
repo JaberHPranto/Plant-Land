@@ -43,6 +43,14 @@ code {
 .form-control {
   opacity: 0.8;
 }
+.page-link:hover {
+  background-color: lightblue;
+  border-color: lightblue;
+}
+.page-item.active .page-link {
+  background-color: lightgreen;
+  border-color: lightgreen;
+}
 
 /* Google button */
 .login-with-google-btn {

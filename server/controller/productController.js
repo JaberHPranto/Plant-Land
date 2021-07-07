@@ -5,6 +5,10 @@ import User from '../models/userModel.js'
 // getting all products @route -> api/products
 export const getProducts = asyncHandler(async (req, res) => {
 
+    // for pagination
+    const pageSize = 2
+    const page = req.query.pageNumber || 1
+
     const keyword = req.query.keyword ? {
         name: {
             $regex: req.query.keyword,
@@ -12,8 +16,14 @@ export const getProducts = asyncHandler(async (req, res) => {
         }
     }:{}
 
-    const products = await Product.find({...keyword})
-        res.json(products)
+    const count = await Product.countDocuments({ ...keyword })
+    const products = await Product.find({ ...keyword })
+        .limit(pageSize)   // how many product will be shown 
+        .skip(pageSize * (page - 1))  // skipping products to be shown on next page; skip till
+    
+    const numOfPages = Math.ceil(count/pageSize)
+       
+    res.json({ products, page, numOfPages })
 })
 
 
