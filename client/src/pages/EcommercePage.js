@@ -11,6 +11,7 @@ import ProfileScreen from "../components/Ecommerce/Screen/ProfileScreen";
 import RegisterScreen from "../components/Ecommerce/Screen/RegisterScreen";
 import "../styles/ecommerce.css";
 import ShippingScreen from "../components/Ecommerce/Screen/ShippingScreen";
+import PaymentScreen from "../components/Ecommerce/Screen/PaymentScreen";
 
 function EcommercePage() {
   return (
@@ -27,6 +28,7 @@ function EcommercePage() {
           <Route path="/page/:pageNumber" component={HomeScreen} />
           <Route path="/login" component={LoginScreen} />
           <Route path="/shipping" component={ShippingScreen} />
+          <Route path="/payment" component={PaymentScreen} />
 
           <Route path="/register" component={RegisterScreen} />
           <Route path="/profile" component={ProfileScreen} />
