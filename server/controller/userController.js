@@ -55,6 +55,12 @@ export const registerUser = async (req, res) => {
         .status(404)
         .json({ message: "Passwords must be greater than 6 characters" });
     }
+
+    //check for empty fields
+    if (!name || !email || !password || !confirmPassword) {
+      return res.status(404).json({ message: "Cannot Have Empty Fields" });
+    }
+
     // password is hashed from the user model
 
     // Now create the user
