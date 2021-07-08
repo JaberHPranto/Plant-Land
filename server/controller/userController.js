@@ -50,7 +50,11 @@ export const registerUser = async (req, res) => {
       return res.status(404).json({ message: "Passwords don't match" });
 
     //password length check
-
+    if (password.length < 6) {
+      return res
+        .status(404)
+        .json({ message: "Passwords must be greater than 6 characters" });
+    }
     // password is hashed from the user model
 
     // Now create the user
