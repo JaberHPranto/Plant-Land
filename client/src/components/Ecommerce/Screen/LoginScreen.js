@@ -43,12 +43,13 @@ function LoginScreen({location,history}) {
                     <Form.Control type="email" placeholder="Enter email" value={email} onChange={(e)=> setEmail(e.target.value)} />
                 </Form.Group>
 
-                <Form.Group controlId="password" className='mb-4'>
+                <Form.Group controlId="password" className='mb-1'>
                     <Form.Label>Password</Form.Label>
                     <Form.Control type="password" placeholder="Enter password" value={password} onChange={(e)=> setPassword(e.target.value)} />
                 </Form.Group>
+                <Link to ="/forget-password" >Forget Password ?</Link>
 
-                <Button type='submit' variant='primary' className="auth-btn mb-2" >Sign In</Button>
+                <Button type='submit' variant='primary' className="auth-btn mb-2 mt-4" >Sign In</Button>
             </Form>
 
             <Row>

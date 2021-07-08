@@ -111,17 +111,16 @@ export const forgetPassword = async (req, res) => {
     
     try {
         const user = await User.findOne({ email })
-        if (!user)
-            return res.status(404).json({error:"User doesn't exist"})
+        if (!user) {
+            return res.status(404).json({ message: "User doesn't exist" })
+            // res.status(404)
+            // throw new Error("User doesn't exist")
+        }
         
         const resetToken = user.getPasswordResetToken()
-
-
-        // user.resetPasswordToken = user.resetPasswordToken
-        // user.resetPasswordExpire = user.resetPasswordExpire
         await user.save()
 
-        const resetUrl = `http://localhost:3000/forget-password/${resetToken}`
+        const resetUrl = `http://localhost:3000/reset-password/${resetToken}`
         const message = `
            <h1> Plant Land </h1>
            <h2>You have requested a password reset</h2>
@@ -142,7 +141,7 @@ export const forgetPassword = async (req, res) => {
 
             await user.save()
             console.log(error);
-            res.status(500).json("Failed to send email")
+            res.status(500).json({message: "Failed to send email"})
         }
 
         res.status(200).json({ message: 'Success',data:"Email Sent"})
@@ -150,7 +149,7 @@ export const forgetPassword = async (req, res) => {
         
     } catch (error) {
         console.log(error);
-        res.status(404).json({ error: "Forget password failed" })
+        res.status(404).json({ message: "Forget password failed" })
     }
 }
 
@@ -164,7 +163,7 @@ export const resetPassword = async (req, res) => {
         })
 
         if (!user) {
-            return res.status(400).json({ error: "Invalid Reset Token" })
+            return res.status(400).json({ message: "Invalid Reset Token" })
         }
 
         user.password = req.body.password
@@ -177,6 +176,6 @@ export const resetPassword = async (req, res) => {
 
     } catch (error) {
         console.log(error);
-        res.status(500).json({ error: "Failed to reset password" })
+        res.status(500).json({ message: "Failed to reset password" })
     }
 }
