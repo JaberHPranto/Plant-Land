@@ -29,7 +29,7 @@ const PaymentScreen = ({ history }) => {
       <h1>Payment Method</h1>
       <Form onSubmit={submitHandler}>
         <Form.Group>
-          <Form.Label as="legend">Select Method</Form.Label>
+          <Form.Label as="legend">Select Method </Form.Label>
           <Col>
             <Form.Check
               type="radio"
@@ -47,6 +47,16 @@ const PaymentScreen = ({ history }) => {
               name="paymentMethod"
               value="Stripe"
               checked={paymentMethod === "PayPal" ? true : false}
+              onChange={(e) => setPaymentMethod(e.target.value)}
+            ></Form.Check>
+
+            <Form.Check
+              type="radio"
+              label="SSL E-Commerce"
+              id="SSL E-Commerce"
+              name="paymentMethod"
+              value="SSL E-Commerce"
+              checked={paymentMethod === "SSL E-Commerce" ? true : false}
               onChange={(e) => setPaymentMethod(e.target.value)}
             ></Form.Check>
           </Col>
