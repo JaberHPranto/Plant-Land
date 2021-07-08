@@ -1,4 +1,5 @@
 import bcrypt from 'bcrypt'
+import crypto from 'crypto'
 import mongoose from 'mongoose'
 
 const userSchema = mongoose.Schema({
@@ -20,6 +21,8 @@ const userSchema = mongoose.Schema({
         required: true,
         default:false
     },
+    resetPasswordToken: String,
+    resetPasswordExpire: Date
 }, {
     timestamps:true
 })
@@ -33,6 +36,18 @@ userSchema.pre('save', async function (next) {
     const salt = await bcrypt.genSalt(10)
     this.password = await bcrypt.hash(this.password,salt)
 })
+
+// method for forget password
+userSchema.methods.getPasswordResetToken = function () {
+    const resetToken = crypto.randomBytes(20).toString('hex')
+
+    // setting a field in user model
+    this.resetPasswordToken = crypto.createHash('sha256').update(resetToken).digest('hex')
+    this.resetPasswordExpire = Date.now() + 10 * (60 * 1000)
+    
+    return resetToken
+
+}
 
 const User = mongoose.model("User", userSchema)
 export default User

@@ -2,6 +2,7 @@ import React from 'react'
 import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import { LinkContainer } from 'react-router-bootstrap'
+import { useHistory } from 'react-router-dom'
 import { logout } from '../../redux/actions/userActions'
 import SearchBox from './SearchBox'
 import { toastErrorMessage } from './ToastMessage'
@@ -10,9 +11,11 @@ import { toastErrorMessage } from './ToastMessage'
 function Header() {
     const { userInfo } = useSelector(state => state.userLogin)
     const dispatch = useDispatch()
+    const history = useHistory()
 
     const handleLogout = () => {
         dispatch(logout())
+        history.push("/")
         toastErrorMessage("You're logged out")
     }
     
