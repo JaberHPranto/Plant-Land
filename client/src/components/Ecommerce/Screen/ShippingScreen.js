@@ -1,17 +1,17 @@
 import React, { useState } from "react";
-import { Form, Button } from "react-bootstrap";
+import { Button, Form } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import FormContainer from "../FormContainer";
 import { saveShippingAddress } from "../../../redux/actions/cartActions";
+import FormContainer from "../FormContainer";
 
 const ShippingScreen = ({ history }) => {
   const cart = useSelector((state) => state.cart);
   const { shippingAddress } = cart;
 
-  const [address, setAddress] = useState(shippingAddress.address);
-  const [city, setCity] = useState(shippingAddress.city);
-  const [thana, setThana] = useState(shippingAddress.thana);
-  const [houseNumber, setHouseNumber] = useState(shippingAddress.houseNumber);
+  const [address, setAddress] = useState(shippingAddress.address || '');
+  const [city, setCity] = useState(shippingAddress.city || '');
+  const [thana, setThana] = useState(shippingAddress.thana || '');
+  const [houseNumber, setHouseNumber] = useState(shippingAddress.houseNumber || '');
   const dispatch = useDispatch();
 
   const submitHandler = (e) => {
