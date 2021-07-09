@@ -1,18 +1,18 @@
-import cors from 'cors';
-import dotenv from 'dotenv';
-import express from 'express';
-import morgan from 'morgan';
-import connectDB from './config/db.js';
-import { errorHandler, notFound } from './middlewares/errorMiddleware.js';
-import productRoutes from './routes/productRoutes.js';
-import userRoutes from './routes/userRoutes.js';
-
+import cors from "cors";
+import dotenv from "dotenv";
+import express from "express";
+import morgan from "morgan";
+import connectDB from "./config/db.js";
+import { errorHandler, notFound } from "./middlewares/errorMiddleware.js";
+import productRoutes from "./routes/productRoutes.js";
+import userRoutes from "./routes/userRoutes.js";
+import orderRoutes from "./routes/orderRoutes.js";
 
 const app = express();
 dotenv.config();
 
-if (process.env.NODE_ENV === 'development') {
-  app.use(morgan('dev'))
+if (process.env.NODE_ENV === "development") {
+  app.use(morgan("dev"));
 }
 
 // middlewares
@@ -25,8 +25,9 @@ app.get("/", (req, res) => {
 });
 
 //routes
-app.use("/api/products", productRoutes)
-app.use("/api/users", userRoutes)
+app.use("/api/products", productRoutes);
+app.use("/api/users", userRoutes);
+app.use("/api/orders", orderRoutes);
 
 // error handler
 app.use(notFound);
