@@ -13,7 +13,8 @@ const orderSchema = mongoose.Schema(
         qty: { type: Number, required: true },
         image: { type: String, required: true },
         price: { type: Number, required: true },
-        product: {
+        countInStock:{type:Number,required:true},
+        productId: {
           type: mongoose.Schema.Types.ObjectId,
           required: true,
           ref: "Product",
@@ -23,10 +24,8 @@ const orderSchema = mongoose.Schema(
     shippingAddress: {
       address: { type: String, required: true },
       city: { type: String, required: true },
-
-      district: { type: String, required: true },
-      houseNumber: { type: String, required: true },
       thana: { type: String, required: true },
+      houseNumber: { type: String, required: true },
     },
 
     paymentMethod: {

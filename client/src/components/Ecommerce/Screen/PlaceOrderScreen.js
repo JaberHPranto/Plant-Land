@@ -1,10 +1,11 @@
-import React, { useEffect } from "react";
-import { Link } from "react-router-dom";
-import { Button, Row, Col, ListGroup, Image, Card } from "react-bootstrap";
+import React from "react";
+import { Button, Card, Col, Image, ListGroup, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import Message from "../Message";
-import CheckoutSteps from "../CheckoutSteps";
+import { Link } from "react-router-dom";
 import { createOrder } from "../../../redux/actions/orderActions";
+import CheckoutSteps from "../CheckoutSteps";
+import Message from "../Message";
+import { toastSuccessMessage } from "../ToastMessage";
 
 const PlaceOrderScreen = ({ history }) => {
   const dispatch = useDispatch();
@@ -14,14 +15,17 @@ const PlaceOrderScreen = ({ history }) => {
   const orderCreate = useSelector((state) => state.orderCreate);
   const { order, success, error } = orderCreate;
 
-  useEffect(() => {
-    if (success) {
-      history.push(`/order/${order._id}`);
-    }
-    // eslint-disable-next-line
-  }, [history, success]);
+  // useEffect(() => {
+  //   if (success) {
+  //     // history.push(`/order/${order._id}`);
+  //     // history.push("/order")
+  //   }
+  //   // eslint-disable-next-line
+  // }, [history, success]);
 
   const placeOrderHandler = () => {
+    console.log(cart.cartItems);
+
     dispatch(
       createOrder({
         orderItems: cart.cartItems,
@@ -32,6 +36,8 @@ const PlaceOrderScreen = ({ history }) => {
         totalPrice: cart.totalPrice,
       })
     );
+    toastSuccessMessage("You're order has been placed")
+    
   };
   //Calculate Price
   const addDecimals = (num) => {

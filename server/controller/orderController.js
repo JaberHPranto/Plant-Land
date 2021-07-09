@@ -14,20 +14,23 @@ const addOrderItems = asyncHandler(async (req, res) => {
     totalPrice,
   } = req.body;
 
+
   if (orderItems && orderItems.length === 0) {
     res.status(400);
     throw new Error("No ordered items");
     return;
   } else {
     const order = new Order({
-      orderItems,
-      user: req.user._id,
+      orderedItems:orderItems,
+      user: req.userId,
       shippingAddress,
       paymentMethod,
       itemsPrice,
       shippingPrice,
       totalPrice,
     });
+
+    console.log(order.orderItems);
 
     const createdOrder = await order.save();
 
@@ -36,3 +39,4 @@ const addOrderItems = asyncHandler(async (req, res) => {
 });
 
 export { addOrderItems };
+
