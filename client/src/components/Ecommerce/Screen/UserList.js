@@ -6,16 +6,22 @@ import { getUserList } from '../../../redux/actions/userActions'
 import Loader from '../Loader'
 import Message from '../Message'
 
-function UserList() {
+function UserList({history}) {
 
     const dispatch = useDispatch()
     const userList = useSelector(state => state.userList)
+    const { userInfo: { user } } = useSelector(state => state.userLogin)
+    
 
     const { loading, error, users } = userList
     
     useEffect(() => {
-        dispatch(getUserList())
-    }, [dispatch])
+        if (user && user.isAdmin) {
+            dispatch(getUserList())
+        } else {
+            history.push("/login")
+        }
+    }, [dispatch,history,user])
 
     const handleDelete = () => {
         console.log('deleted')
