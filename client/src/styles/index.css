@@ -2,6 +2,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Asap:ital,wght@0,400;0,500;0,600;1,600&display=swap");
 
 /* Fonts -> Lato, Open Sans, Source Sans Pro , Asap */
+:root {
+  --color-primary-1: #53974f;
+  --color-primary-2: #3d9830;
+}
 
 * {
   margin: 0;
@@ -21,6 +25,9 @@ code {
   font-family: "Lato", source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+/* .nav-header {
+  background-color: #81fbb8;
+} */
 
 .dropdown-item:hover {
   background-color: #ddd;

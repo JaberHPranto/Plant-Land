@@ -1,4 +1,6 @@
 import jwt from 'jsonwebtoken';
+import User from '../models/userModel.js';
+
 const isLoggedIn = async (req, res, next) => {
     try {
 
@@ -10,12 +12,16 @@ const isLoggedIn = async (req, res, next) => {
         if (token && isCustomAuth) {
             decodedData = jwt.verify(token, process.env.JWT_SECRET)
             req.userId = decodedData?.id
+            req.user = await User.findById(req.userId)
         }
         else {
             // for google authentication
             decodedData = jwt.decode(token)
             req.userId = decodedData?.sub
         }
+
+        console.log(req.userId);
+        console.log(req.user);
 
         next()
     } catch (error) {
@@ -25,5 +31,19 @@ const isLoggedIn = async (req, res, next) => {
     
 }
 
-export { isLoggedIn };
+
+const isAdmin = (req, res, next) => {
+    
+    if (req.user && req.user.isAdmin) {
+        next()
+    }
+    else {
+        throw new Error("Not authorized as Admin")
+    }
+   
+}
+
+
+export { isLoggedIn, isAdmin };
+    
 

@@ -15,7 +15,7 @@ export const authUser = async (req, res) => {
     // check for whether the user exist
     const existingUser = await User.findOne({ email });
     if (!existingUser)
-      return res.status(404).json({ message: "Invalid Credentials" });
+      return res.status(404).json({ message: "User not found" });
 
     // if user exist, check for password
     const isValidPassword = await bcrypt.compare(
@@ -190,3 +190,10 @@ export const resetPassword = async (req, res) => {
     }
 }
 
+
+// @ getting all users - only for admin
+export const getUsers = asyncHandler(async (req, res) => {
+  const users = await User.find()
+  res.json(users)
+  
+});
