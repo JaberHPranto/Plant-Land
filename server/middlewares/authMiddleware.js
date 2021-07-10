@@ -12,7 +12,7 @@ const isLoggedIn = async (req, res, next) => {
         if (token && isCustomAuth) {
             decodedData = jwt.verify(token, process.env.JWT_SECRET)
             req.userId = decodedData?.id
-            req.user = await User.findById(req.userId)
+            req.user = await User.findById(req.userId).select('-password')
         }
         else {
             // for google authentication
