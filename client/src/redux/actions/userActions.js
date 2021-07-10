@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { USER_DETAILS_FAIL, USER_DETAILS_REQUEST, USER_DETAILS_SUCCESS, USER_LOGIN_FAIL, USER_LOGIN_REQUEST, USER_LOGIN_SUCCESS, USER_LOGOUT, USER_PROFILE_UPDATE_FAIL, USER_PROFILE_UPDATE_REQUEST, USER_PROFILE_UPDATE_SUCCESS, USER_REGISTER_FAIL, USER_REGISTER_REQUEST, USER_REGISTER_SUCCESS } from '../../constants/userConstants'
+import { USER_DETAILS_FAIL, USER_DETAILS_REQUEST, USER_DETAILS_SUCCESS, USER_LIST_FAIL, USER_LIST_REQUEST, USER_LIST_SUCCESS, USER_LOGIN_FAIL, USER_LOGIN_REQUEST, USER_LOGIN_SUCCESS, USER_LOGOUT, USER_PROFILE_UPDATE_FAIL, USER_PROFILE_UPDATE_REQUEST, USER_PROFILE_UPDATE_SUCCESS, USER_REGISTER_FAIL, USER_REGISTER_REQUEST, USER_REGISTER_SUCCESS } from '../../constants/userConstants'
 
 export const login = (email,password) => async (dispatch) => {
 
@@ -169,6 +169,42 @@ export const updateUserProfile = (user) => async (dispatch,getState) => {
         console.log(error);
         dispatch({
             type: USER_PROFILE_UPDATE_FAIL,
+            payload: error.response && error.response.data.message ? error.response.data.message : error.message
+            
+        })
+        
+    }
+    
+}
+
+export const getUserList = () => async (dispatch,getState) => {
+
+    try {
+        dispatch({
+            type:USER_LIST_REQUEST
+        })
+
+        const { userLogin: { userInfo } } = getState()
+        
+        
+        const config = {
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${userInfo.token}`
+            }
+        }
+
+        const { data } = await axios.get(`/api/users`,config)
+
+        dispatch({
+            type: USER_LIST_SUCCESS,
+            payload:data
+        })
+        
+    } catch (error) {
+        console.log(error);
+        dispatch({
+            type: USER_LIST_FAIL,
             payload: error.response && error.response.data.message ? error.response.data.message : error.message
             
         })

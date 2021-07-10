@@ -14,6 +14,7 @@ import ProductScreen from '../components/Ecommerce/Screen/ProductScreen';
 import ProfileScreen from '../components/Ecommerce/Screen/ProfileScreen';
 import RegisterScreen from '../components/Ecommerce/Screen/RegisterScreen';
 import ShippingScreen from "../components/Ecommerce/Screen/ShippingScreen";
+import UserList from "../components/Ecommerce/Screen/UserList";
 import '../styles/ecommerce.css';
 
 function EcommercePage() {
@@ -31,6 +32,7 @@ function EcommercePage() {
           <Route path="/forget-password" component={ForgetPasswordScreen} />
           <Route path="/reset-password/:resetToken" component={PasswordResetScreen} />
           <Route path="/profile" component={ProfileScreen} />
+          <Route path="/admin/userlist" component={UserList} />
           <Route path="/product/:id" component={ProductScreen} />
           <Route path="/cart/:id?" component={CartScreen} />
           <Route path="/shipping" component={ShippingScreen} />

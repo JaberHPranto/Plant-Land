@@ -13,7 +13,7 @@ const PlaceOrderScreen = ({ history }) => {
   const cart = useSelector((state) => state.cart);
 
   const orderCreate = useSelector((state) => state.orderCreate);
-  const { order, success, error } = orderCreate;
+  const { error } = orderCreate;
 
   // useEffect(() => {
   //   if (success) {

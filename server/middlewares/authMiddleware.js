@@ -20,9 +20,6 @@ const isLoggedIn = async (req, res, next) => {
             req.userId = decodedData?.sub
         }
 
-        console.log(req.userId);
-        console.log(req.user);
-
         next()
     } catch (error) {
         console.log(error); 
