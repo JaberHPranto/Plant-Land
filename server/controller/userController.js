@@ -191,9 +191,22 @@ export const resetPassword = async (req, res) => {
 }
 
 
-// @ getting all users - only for admin
+/* ADMIN ONLY */
+
+// @ getting all users 
 export const getUsers = asyncHandler(async (req, res) => {
   const users = await User.find()
   res.json(users)
   
+});
+
+// @ delete a user
+export const deleteUser = asyncHandler(async (req, res) => {
+  const user = await User.findById(req.params.id)
+  if (user) {
+    await user.remove()
+    res.status(200).json({ message: "User removed" })
+  } else {
+    throw new Error("User not found")
+  }
 });

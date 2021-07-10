@@ -2,15 +2,17 @@ import React, { useEffect } from 'react'
 import { Button, Table } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import { LinkContainer } from 'react-router-bootstrap'
-import { getUserList } from '../../../redux/actions/userActions'
+import { deleteUser, getUserList } from '../../../redux/actions/userActions'
 import Loader from '../Loader'
 import Message from '../Message'
+import { toastErrorMessage } from '../ToastMessage'
 
 function UserList({history}) {
 
     const dispatch = useDispatch()
     const userList = useSelector(state => state.userList)
     const { userInfo: { user } } = useSelector(state => state.userLogin)
+    const { success: deleteSuccess } = useSelector(state => state.userDelete)
     
 
     const { loading, error, users } = userList
@@ -21,10 +23,13 @@ function UserList({history}) {
         } else {
             history.push("/login")
         }
-    }, [dispatch,history,user])
+    }, [dispatch,history,user,deleteSuccess])
 
-    const handleDelete = () => {
-        console.log('deleted')
+    const handleDelete = (id) => {
+        if (window.confirm('Are you sure you want to delete this user ?')) {
+            dispatch(deleteUser(id))
+            toastErrorMessage("User deleted")
+        }
     }
 
     return (
@@ -61,7 +66,7 @@ function UserList({history}) {
                                     </LinkContainer>
                                 </td>
                                 <td>
-                                    <Button variant='light' onClick={handleDelete}><i className='fas fa-trash'></i></Button>
+                                    <Button variant='light' onClick={()=>handleDelete(user._id)}><i className='fas fa-trash'></i></Button>
                                 </td>                                
                             </tr>
                         ))}
