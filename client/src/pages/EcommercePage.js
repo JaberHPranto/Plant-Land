@@ -10,6 +10,7 @@ import LoginScreen from '../components/Ecommerce/Screen/LoginScreen';
 import PasswordResetScreen from '../components/Ecommerce/Screen/PasswordResetScreen';
 import PaymentScreen from "../components/Ecommerce/Screen/PaymentScreen";
 import PlaceOrderScreen from "../components/Ecommerce/Screen/PlaceOrderScreen";
+import ProductListScreen from "../components/Ecommerce/Screen/ProductListScreen";
 import ProductScreen from '../components/Ecommerce/Screen/ProductScreen';
 import ProfileScreen from '../components/Ecommerce/Screen/ProfileScreen';
 import RegisterScreen from '../components/Ecommerce/Screen/RegisterScreen';
@@ -33,6 +34,7 @@ function EcommercePage() {
           <Route path="/reset-password/:resetToken" component={PasswordResetScreen} />
           <Route path="/profile" component={ProfileScreen} />
           <Route path="/admin/userlist" component={UserList} />
+          <Route path="/admin/productlist" component={ProductListScreen} />
           <Route path="/product/:id" component={ProductScreen} />
           <Route path="/cart/:id?" component={CartScreen} />
           <Route path="/shipping" component={ShippingScreen} />

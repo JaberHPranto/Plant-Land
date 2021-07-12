@@ -79,3 +79,15 @@ export const createProductReview = asyncHandler(async (req, res) => {
         throw new Error("Product not found")
     }
 })
+
+
+// getting a product @route -> api/products/:id
+export const deleteProductById = (async (req, res) => {
+    try {
+        const product = await Product.findById(req.params.id)
+        await product.remove()
+        res.status(200).json({message:'Product deleted successfully'})
+    } catch(err){
+        res.status(404).json({message:"No product found"})
+    }
+})
