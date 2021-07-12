@@ -6,7 +6,7 @@ import User from '../models/userModel.js'
 export const getProducts = asyncHandler(async (req, res) => {
 
     // for pagination
-    const pageSize = 8
+    const pageSize = 12
     const page = req.query.pageNumber || 1
 
     const keyword = req.query.keyword ? {
@@ -80,6 +80,7 @@ export const createProductReview = asyncHandler(async (req, res) => {
     }
 })
 
+/* ADMIN */
 
 // getting a product @route -> api/products/:id
 export const deleteProductById = (async (req, res) => {
@@ -88,6 +89,54 @@ export const deleteProductById = (async (req, res) => {
         await product.remove()
         res.status(200).json({message:'Product deleted successfully'})
     } catch(err){
-        res.status(404).json({message:"No product found"})
+        res.status(404).json({error:"No product found"})
+    }
+})
+
+// Crating a product -> api/products (POST)
+export const createProduct = (async (req, res) => {
+    try {
+        const product = new Product({
+            name: 'Sample Product',
+            description: 'Sample description',
+            user: req.userId,
+            image: '/images/sample.jpg',
+            category: 'Sample category',
+            price: 0,
+            countInStock: 0,
+            numReviews:0
+        })
+        const createdProduct = await product.save()
+        res.status(201).json(createdProduct)
+    } catch (err) {
+        console.log(error);
+        res.status(404).json({message:"Failed to create a product"})
+    }
+})
+
+
+// Update a product -> api/products/:id (PUT)
+export const updateProduct = (async (req, res) => {
+    try {
+        const { name, description, image, category, price, countInStock } = req.body
+
+        const product = await Product.findById(req.params.id)
+        if (product) {
+            product.name= name,
+            product.description= description,
+            product.image= image,
+            product.category= category,
+            product.price= price,
+            product.countInStock=countInStock
+            
+            const updatedProduct = await product.save()
+            return res.status(201).json(updatedProduct)
+            
+        } else {
+            return res.status(401).json({message:"Product not found"})
+        }
+    } catch (err) {
+        console.log(error);
+        res.status(404).json({message:"Failed to create a product"})
     }
 })
