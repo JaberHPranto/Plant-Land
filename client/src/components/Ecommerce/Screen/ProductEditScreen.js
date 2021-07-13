@@ -1,3 +1,4 @@
+import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { Button, Form } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
@@ -18,6 +19,7 @@ const ProductEditScreen = ({ match, history }) => {
   const [price, setPrice] = useState(0)
   const [countInStock, setCountInStock] = useState(0)
   const [image, setImage] = useState('')
+  const [uploading, setUploading] = useState(false)
 
   const dispatch = useDispatch()
 
@@ -34,16 +36,16 @@ const ProductEditScreen = ({ match, history }) => {
           history.push("/admin/productlist")
 
       } else {
-          if (!product.name || product._id !== productId) {
-                dispatch(fetchProductById(productId))
-            } else {
-                setName(product.name)
-                setDescription(product.description)
-                setCategory(product.category)
-                setImage(product.image)
-                setPrice(product.price)
-                setCountInStock(product.countInStock)
-            }
+        if (!product.name || product._id !== productId) {
+            dispatch(fetchProductById(productId))
+        } else {   
+          setName(product.name)
+          setDescription(product.description)
+          setCategory(product.category)
+          setImage(product.image)
+          setPrice(product.price)
+          setCountInStock(product.countInStock)
+        }
       }
 
   }, [dispatch,product,productId,successUpdate,history])
@@ -53,6 +55,29 @@ const ProductEditScreen = ({ match, history }) => {
       dispatch(updateProduct({
           _id: product._id,name,description,image,category,price,countInStock
       }))
+  }
+
+  const handleFileUpload = async (e) => {
+    const file = e.target.files[0]
+    const formData = new FormData()
+    formData.append('image', file)
+    setUploading(true)
+
+    try {
+      const config = {
+        headers: {
+          'Content-Type':'multipart/form-data'
+        }
+      }
+      const { data } = await axios.post(`/api/uploads`, formData, config)
+      console.log(data);
+      setImage(data)
+      setUploading(false)
+
+    } catch (error) {
+      console.log(error)
+      setUploading(false)
+    }
   }
 
   return (
@@ -108,6 +133,11 @@ const ProductEditScreen = ({ match, history }) => {
                 value={image}
                 onChange={(e) => setImage(e.target.value)}
               ></Form.Control>
+              
+              <Form.File
+                id='image-file' custom label='Choose file' onChange={handleFileUpload}
+              ></Form.File>
+              {uploading && <Loader />}
             </Form.Group>
                               
             <Form.Group controlId='price'>
