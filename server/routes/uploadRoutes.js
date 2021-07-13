@@ -1,6 +1,7 @@
 import express from 'express'
 import multer from 'multer'
 import path from 'path'
+import cloudinary from '../utils/cloudinary.js'
 
 const router = express.Router()
 
@@ -34,8 +35,16 @@ const upload = multer({
     }
 })
 
-router.post('/', upload.single('image'), (req, res) => {
-    res.send(`uploads/${req.file.filename}`)
+router.post('/', upload.single('image'), async (req, res) => {
+    try {
+        const result = await cloudinary.uploader.upload(`uploads/${req.file.filename}`)
+        console.log(result);
+        // res.send(`uploads/${req.file.filename}`)
+        res.send(result.secure_url)
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({error:'Image Only'})
+    }
 })
 
 export default router
