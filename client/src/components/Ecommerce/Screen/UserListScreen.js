@@ -7,7 +7,7 @@ import Loader from '../Loader'
 import Message from '../Message'
 import { toastErrorMessage } from '../ToastMessage'
 
-function UserList({history}) {
+function UserListScreen({history}) {
 
     const dispatch = useDispatch()
     const userList = useSelector(state => state.userList)
@@ -78,4 +78,4 @@ function UserList({history}) {
     )
 }
 
-export default UserList
+export default UserListScreen

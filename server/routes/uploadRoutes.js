@@ -23,7 +23,7 @@ const checkFileType = (file, cb) => {
     if (extName && mimetype) {
         cb(null,true)
     } else {
-        cb('Images Only !')
+        cb(new Error("Image Only !",false))
     }
 }
 
