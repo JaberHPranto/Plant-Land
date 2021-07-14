@@ -14,7 +14,7 @@ function LoginScreen({location,history}) {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
-    const redirect = location.search ? location.search.split("=")[1] : "/"
+    const redirect = location.search ? location.search.split("=")[1] : "/market"
 
     const dispatch = useDispatch()
     const userLogin = useSelector(state => state.userLogin)
@@ -49,7 +49,7 @@ function LoginScreen({location,history}) {
                 </Form.Group>
                 <Link to ="/forget-password" >Forget Password ?</Link>
 
-                <Button type='submit' variant='primary' className="auth-btn mb-2 mt-4" >Sign In</Button>
+                <Button type='submit' variant='primary' className="auth-btn mb-2 mt-4 bg-col-primary" >Sign In</Button>
             </Form>
 
             <Row>

@@ -64,7 +64,7 @@ function RegisterScreen({location,history}) {
                     <Form.Control type="password" placeholder="Confirm Password" value={confirmPassword} onChange={(e)=> setConfirmPassword(e.target.value)} />
                 </Form.Group>
 
-                <Button type='submit' variant='primary' className="auth-btn mb-2" >Sign Up</Button>
+                <Button type='submit' variant='primary' className="auth-btn mb-2 bg-col-primary" >Sign Up</Button>
             </Form>
 
             <Row>

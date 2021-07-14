@@ -3,8 +3,8 @@
 
 /* Fonts -> Lato, Open Sans, Source Sans Pro , Asap */
 :root {
-  --color-primary-1: #53974f;
-  --color-primary-2: #3d9830;
+  --color-primary-1: rgb(0, 158, 96);
+  --color-primary-2: #37ae5b;
 }
 
 * {
@@ -25,12 +25,14 @@ code {
   font-family: "Lato", source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
-/* .nav-header {
-  background-color: #81fbb8;
-} */
+
+.bg-col-primary {
+  background-color: var(--color-primary-1);
+  /* background-color: #37ae5b; */
+}
 
 .dropdown-item:hover {
-  background-color: #ddd;
+  background-color: var(--color-primary-2);
 }
 
 .auth-btn {
@@ -51,12 +53,12 @@ code {
   opacity: 0.8;
 }
 .page-link:hover {
-  background-color: lightblue;
-  border-color: lightblue;
+  background-color: var(--color-primary-1);
+  border-color: var(--color-primary-1);
 }
 .page-item.active .page-link {
-  background-color: lightgreen;
-  border-color: lightgreen;
+  background-color: var(--color-primary-2);
+  border-color: var(--color-primary-2);
 }
 
 /* Google button */

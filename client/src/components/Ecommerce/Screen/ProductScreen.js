@@ -105,7 +105,7 @@ function ProductScreen({ match,history  }) {
                                     </ListGroup.Item>
                                 )}
                                 <ListGroup.Item>
-                                <Button style={{width:'100%'}} className="btn btn-success" disabled={product.countInStock===0} onClick={addToCartHandler} >Add to cart</Button>
+                                <Button style={{width:'100%'}} className="btn bg-col-primary" disabled={product.countInStock===0} onClick={addToCartHandler} >Add to cart</Button>
                                 </ListGroup.Item>
                             </ListGroup>
                             </Card>
@@ -145,7 +145,7 @@ function ProductScreen({ match,history  }) {
                                         <Form.Control as='textarea' value={comment} onChange={(e) => setComment(e.target.value)} />
                                     </Form.Group>
 
-                                    <Button type='submit' variant='primary' className="auth-btn mb-2" >Submit</Button>
+                                    <Button type='submit' variant='primary' className="auth-btn mb-2 bg-col-primary" >Submit</Button>
 
                                 </Form>
                                 

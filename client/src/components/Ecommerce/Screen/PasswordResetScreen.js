@@ -40,7 +40,7 @@ function ForgetPasswordScreen({match,history}) {
         try {
             await axios.put(`/api/users/reset-password/${match.params.resetToken}`, { password }, config)
             toastSuccessMessage("You're password has been updated")
-            history.push("/")
+            history.push("/market")
             
         } catch (error) {
             setError(error.response && error.response.data.message ? error.response.data.message : error.message)
@@ -67,7 +67,7 @@ function ForgetPasswordScreen({match,history}) {
                     <Form.Control type="password" placeholder="Confirm Password" value={confirmPassword} onChange={(e)=> setConfirmPassword(e.target.value)} />
                 </Form.Group>
 
-                <Button type='submit' variant='primary' className="auth-btn" >Submit</Button>
+                <Button type='submit' variant='primary' className="auth-btn bg-col-primary" >Submit</Button>
             </Form>            
         </FormContainer>
     )

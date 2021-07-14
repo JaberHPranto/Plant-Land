@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react'
 import { Button, Table } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
-import { LinkContainer } from 'react-router-bootstrap'
 import { deleteUser, getUserList } from '../../../redux/actions/userActions'
 import Loader from '../Loader'
 import Message from '../Message'
@@ -60,11 +59,11 @@ function UserListScreen({history}) {
                                         <i className="fas fa-times" style={{ color: 'red' }}></i>
                                     }
                                 </td>
-                                <td>
+                                {/* <td>
                                     <LinkContainer to={`users/${user._id}/edit`}>
                                         <Button ><i className='fas fa-edit'></i></Button>
                                     </LinkContainer>
-                                </td>
+                                </td> */}
                                 <td>
                                     <Button variant='light' onClick={()=>handleDelete(user._id)}><i className='fas fa-trash'></i></Button>
                                 </td>                                

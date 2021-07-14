@@ -43,7 +43,7 @@ function ForgetPasswordScreen() {
                     <Form.Control type="email" placeholder="Enter email" value={email} onChange={(e)=> setEmail(e.target.value)} />
                 </Form.Group>
 
-                <Button type='submit' variant='primary' className="auth-btn" >Submit</Button>
+                <Button type='submit' variant='primary' className="auth-btn bg-col-primary" >Submit</Button>
             </Form>            
         </FormContainer>
     )

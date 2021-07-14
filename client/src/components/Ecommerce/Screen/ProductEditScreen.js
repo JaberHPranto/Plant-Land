@@ -118,15 +118,15 @@ const ProductEditScreen = ({ match, history }) => {
             <Form.Group controlId='category'>
               <Form.Label>Category</Form.Label>
               <Form.Control
-                type='text'
                 placeholder='Enter Category'
+                type='text'
                 value={category}
                 onChange={(e) => setCategory(e.target.value)}
               ></Form.Control>
             </Form.Group>
             
             <Form.Group controlId='image'>
-              <Form.Label>Image</Form.Label>
+              <Form.Label>Enter Image URL</Form.Label>
               <Form.Control
                 type='text'
                 placeholder='Enter image url'
@@ -135,7 +135,9 @@ const ProductEditScreen = ({ match, history }) => {
               ></Form.Control>
               
               <Form.File
-                id='image-file' custom label='Choose file' onChange={handleFileUpload}
+                  id='image-file'
+                  custom
+                  onChange={handleFileUpload}
               ></Form.File>
               {uploading && <Loader />}
             </Form.Group>
@@ -159,7 +161,7 @@ const ProductEditScreen = ({ match, history }) => {
                 onChange={(e) => setCountInStock(e.target.value)}
               ></Form.Control>
             </Form.Group>                              
-            <Button type='submit' variant='primary'>
+            <Button type='submit' className='bg-col-primary auth-btn'>
               Update
             </Button>
           </Form>

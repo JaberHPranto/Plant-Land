@@ -26,7 +26,7 @@ function Product({ product }) {
                      <span style={{fontSize:'1.8rem'}}>৳</span>&nbsp;{product.price}
                 </Card.Text>
 
-                <Button variant="primary" onClick={()=>HandleViewDetails(product._id)} >View Details</Button>
+                <Button className="bg-col-primary" onClick={()=>HandleViewDetails(product._id)} >View Details</Button>
             </Card.Body>
         </Card>
     )

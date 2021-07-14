@@ -55,7 +55,7 @@ function UserList({history}) {
                     <h1>Products</h1>
                 </Col>
                 <Col className="text-right">
-                    <Button className="my-3 block" style={{float: 'right'}} onClick={handleCreateProduct}><i className="fas fa-plus" onClick={handleCreateProduct}></i> Create Product</Button>
+                    <Button className="my-3 block bg-col-primary" style={{float: 'right'}} onClick={handleCreateProduct}><i className="fas fa-plus" onClick={handleCreateProduct}></i> Create Product</Button>
                 </Col>
             </Row>
             
@@ -69,7 +69,6 @@ function UserList({history}) {
                 <Table striped bordered hover>   
                     <thead>
                         <tr>
-                        <th>ID</th>
                         <th>Name</th>
                         <th>Price</th>
                         <th>Category</th>
@@ -79,14 +78,13 @@ function UserList({history}) {
                     <tbody>
                         {products.map(product=>(
                             <tr key={product._id}>
-                                <td>{product._id}</td>
                                 <td>{product.name}</td>
                                 <td><span style={{fontSize:'1.5rem',marginRight:'0.1rem'}}>৳</span>&nbsp;{product.price}</td>
                                 <td>{product.category}</td>
                                 <td>{product.countInStock}</td>
                                 <td>
                                     <LinkContainer to={`/admin/product/${product._id}/edit`}>
-                                        <Button ><i className='fas fa-edit'></i></Button>
+                                        <Button className='bg-col-primary'><i className='fas fa-edit'></i></Button>
                                     </LinkContainer>
                                 </td>
                                 <td>

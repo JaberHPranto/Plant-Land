@@ -6,7 +6,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-top: 3rem;
+  margin-top: -2rem;
   padding: 2rem;
   /* background-color: #568c3c; */
   height: 90vh;
@@ -51,7 +51,7 @@
   position: relative;
 }
 
-.nav-item a::before {
+/* .nav-item a::before {
   content: "";
   position: absolute;
   bottom: 0;
@@ -60,7 +60,7 @@
   height: 2px;
   background-color: #568c3c;
   transition: width 0.6s cubic-bezier(0.25, 1, 0.5, 1);
-}
+} */
 
 @media (hover: hover) and (pointer: fine) {
   .nav-item a:hover::before {

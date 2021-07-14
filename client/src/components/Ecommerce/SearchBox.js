@@ -10,7 +10,7 @@ function SearchBox() {
         e.preventDefault()
         if (keyword.trim()) {
             history.push(`/search/${keyword}`)
-        }else history.push("/")
+        }else history.push("/market")
     }
 
     return (
@@ -23,7 +23,7 @@ function SearchBox() {
                     name='q'
                     onChange={(e)=>setKeyword(e.target.value)}
                 ></Form.Control>
-                <Button className="btn btn-success" type='submit' >Search</Button>
+                <Button className="btn btn-outline-light" type='submit' >Search</Button>
             </Form>
         </>
     )

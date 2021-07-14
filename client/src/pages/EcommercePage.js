@@ -2,7 +2,7 @@ import React from "react";
 import { Container } from "react-bootstrap";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Footer from "../components/Ecommerce/Footer";
-import Header from "../components/Ecommerce/Header";
+import Header from '../components/Ecommerce/Header';
 import CartScreen from '../components/Ecommerce/Screen/CartScreen';
 import ForgetPasswordScreen from '../components/Ecommerce/Screen/ForgetPasswordScreen';
 import HomeScreen from '../components/Ecommerce/Screen/HomeScreen';
@@ -18,15 +18,18 @@ import ProfileScreen from '../components/Ecommerce/Screen/ProfileScreen';
 import RegisterScreen from '../components/Ecommerce/Screen/RegisterScreen';
 import ShippingScreen from "../components/Ecommerce/Screen/ShippingScreen";
 import UserListScreen from "../components/Ecommerce/Screen/UserListScreen";
+import LandingPage from '../pages/LandingPage';
 import '../styles/ecommerce.css';
+
 
 function EcommercePage() {
   return (
     <Router>
-      <Header />
+        <Header />
       <main>
+      <Route path="/" exact component={LandingPage} />
         <Container>
-          <Route path="/" exact component={HomeScreen} />
+          <Route path="/market" exact component={HomeScreen}/>
           <Route path="/search/:keyword" component={HomeScreen} exact />
           <Route path="/search/:keyword/page/:pageNumber" component={HomeScreen} />
           <Route path="/page/:pageNumber" component={HomeScreen} />
@@ -46,7 +49,7 @@ function EcommercePage() {
           <Route path="/payment" component={PaymentScreen} />
         </Container>
       </main>
-      <Footer />
+        <Footer />
     </Router>
   )
 }

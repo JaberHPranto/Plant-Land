@@ -28,7 +28,7 @@ function OrderListScreen({history}) {
         <>
             {loading ? <Loader /> : error ? <Message variant='danger'>{error}</Message> : (
                 <>
-                <h1>All Users</h1>
+                <h1>All Orders</h1>
                 <Table striped bordered hover>   
                     <thead>
                         <tr>
@@ -53,7 +53,7 @@ function OrderListScreen({history}) {
                                 </td>
                                 <td>
                                     <LinkContainer to={`/order/${order._id}`}>
-                                        <Button >Details</Button>
+                                        <Button className='bg-col-primary' >Details</Button>
                                     </LinkContainer>
                                 </td>                               
                             </tr>

@@ -15,15 +15,15 @@ function Header() {
 
     const handleLogout = () => {
         dispatch(logout())
-        history.push("/")
+        history.push("/market")
         toastErrorMessage("You're logged out")
     }
     
     return (
         <>
-            <Navbar collapseOnSelect expand="lg" bg="primary" variant="dark" className="nav-header">
+            <Navbar collapseOnSelect expand="lg" variant="dark" className="bg-col-primary">
                 <Container>
-                    <LinkContainer to="/">
+                    <LinkContainer to="/market">
                         <Navbar.Brand>Plant Land</Navbar.Brand>
                     </LinkContainer>    
                 

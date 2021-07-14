@@ -18,7 +18,7 @@ function GoogleAuth() {
     try {
         const data = { user, token }
         dispatch(googleLogin(data))
-        history.push("/")
+        history.push("/market")
     } catch (error) {
         console.log(error);
     }
