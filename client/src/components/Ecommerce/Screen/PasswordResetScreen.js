@@ -40,7 +40,7 @@ function ForgetPasswordScreen({match,history}) {
         try {
             await axios.put(`/api/users/reset-password/${match.params.resetToken}`, { password }, config)
             toastSuccessMessage("You're password has been updated")
-            history.push("/market")
+            history.push("/login")
             
         } catch (error) {
             setError(error.response && error.response.data.message ? error.response.data.message : error.message)

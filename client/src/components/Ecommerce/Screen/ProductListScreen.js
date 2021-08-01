@@ -8,7 +8,7 @@ import Loader from '../Loader'
 import Message from '../Message'
 import { toastErrorMessage } from '../ToastMessage'
 
-function UserList({history}) {
+function ProductListScreen({history}) {
 
     const dispatch = useDispatch()
 
@@ -100,4 +100,4 @@ function UserList({history}) {
     )
 }
 
-export default UserList
+export default ProductListScreen

@@ -1,14 +1,17 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Col, Row } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchProducts } from '../../../redux/actions/productActions'
+import FilterCategory from '../FilterCategory'
 import Loader from '../Loader'
 import Message from '../Message'
 import Paginate from '../Paginate'
 import Product from '../Product'
 
 
-function HomeScreen({match}) {
+function HomeScreen({ match }) {
+    
+    const [productCategory, setProductCategory] = useState('')
 
     const dispatch = useDispatch()
     const productList = useSelector(state => state.productList)
@@ -16,15 +19,22 @@ function HomeScreen({match}) {
     
     const keyword = match.params.keyword
     const pageNumber = match.params.pageNumber || 1
+    const category = productCategory
+
 
     useEffect(() => {
-        dispatch(fetchProducts(keyword,pageNumber))
-    }, [dispatch,keyword,pageNumber])
+        dispatch(fetchProducts(keyword,pageNumber,category))
+    }, [dispatch,keyword,pageNumber,category])
 
+    const handleCategoryChange = (e) => {
+        setProductCategory(e.toLowerCase());
+    }
 
     return (
         <div>
+            <FilterCategory handleCategoryChange={handleCategoryChange}/>
             <h2>Latest Products</h2>
+
             {loading ? <Loader /> : error ? <Message variant="danger">{error}</Message> : (
                 <>
                     <Row> 

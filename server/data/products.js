@@ -7,8 +7,8 @@ const products = [
     category: 'plant',
     price: 215,
     countInStock: 10,
-    rating: 4.5,
-    numReviews: 10,
+    rating:0,
+    numReviews:0,
   },
   {
     name: 'Jasminum sambac, Mogra, Arabian Jasmine - Plant',
@@ -17,8 +17,8 @@ const products = [
     category: 'plant',
     price: 299.99,
     countInStock: 7,
-    rating: 4.0,
-    numReviews: 8,
+    rating:0,
+    numReviews:0
   },
   {
     name: 'Money Plant Golden, Scindapsus Golden - Plant',
@@ -28,8 +28,8 @@ const products = [
     category: 'plant',
     price: 529.99,
     countInStock: 5,
-    rating: 5.0,
-    numReviews: 5,
+    rating:0,
+    numReviews:0
   },
   {
     name: 'Peace Lily, Spathiphyllum - Plant',
@@ -39,8 +39,8 @@ const products = [
     category: 'plant',
     price: 399.00,
     countInStock: 11,
-    rating: 4.5,
-    numReviews: 11,
+    rating:0,
+    numReviews:0,
   },
   {
     name: 'Top 3 Air Purifier Plants Pack',
@@ -50,8 +50,8 @@ const products = [
     category: 'plant',
     price: 849.50,
     countInStock: 7,
-    rating: 3.5,
-    numReviews: 10,
+    rating:0,
+    numReviews:0,
   },
 
   //Flowers 
@@ -63,8 +63,8 @@ const products = [
     category: 'flower',
     price: 289,
     countInStock: 4,
-    rating: 5,
-    numReviews: 12,
+    rating:0,
+    numReviews:0,
   },
   {
     name: 'Lantana camara',
@@ -74,8 +74,8 @@ const products = [
     category: 'flower',
     price: 209,
     countInStock: 3,
-    rating: 3,
-    numReviews: 12,
+    rating:0,
+    numReviews:0,
   },
   {
     name: 'Tecoma (Shrub, Orange)',
@@ -85,8 +85,8 @@ const products = [
     category: 'flower',
     price: 309.99,
     countInStock: 7,
-    rating: 4,
-    numReviews: 12,
+    rating:0,
+    numReviews:0,
   },
 
   // seeds
@@ -98,8 +98,8 @@ const products = [
     category: 'seed',
     price: 55,
     countInStock: 10,
-    rating: 3.5,
-    numReviews: 12,
+    rating:0,
+    numReviews:0,
   },
   {
     name: 'Cosmos Yellow - Flower Seeds',
@@ -109,8 +109,8 @@ const products = [
     category: 'seed',
     price: 120,
     countInStock: 8,
-    rating: 3,
-    numReviews: 12,
+    rating:0,
+    numReviews:0,
   },
   {
     name: 'Calendula Bon Bon Orange - Flower Seeds',
@@ -120,8 +120,8 @@ const products = [
     category: 'seed',
     price: 29.99,
     countInStock: 0,
-    rating: 5,
-    numReviews: 12,
+    rating:0,
+    numReviews:0,
   },
 ]
 

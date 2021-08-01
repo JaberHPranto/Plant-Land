@@ -2,11 +2,12 @@ import asyncHandler from 'express-async-handler'
 import Product from '../models/productModel.js'
 import User from '../models/userModel.js'
 
-// getting all products @route -> api/products
+// getting all products @route -> api/products?keyword=${keyword}&pageNumber=${pageNumber}&category=${category}
+
 export const getProducts = asyncHandler(async (req, res) => {
 
     // for pagination
-    const pageSize = 12
+    const pageSize = 16
     const page = req.query.pageNumber || 1
 
     const keyword = req.query.keyword ? {
@@ -14,10 +15,16 @@ export const getProducts = asyncHandler(async (req, res) => {
             $regex: req.query.keyword,
             $options:'i'
         }
+    } : {}
+    
+    const productCategory = req.query.category ? {
+        category: {
+            $regex: req.query.category
+        }
     }:{}
 
-    const count = await Product.countDocuments({ ...keyword })
-    const products = await Product.find({ ...keyword })
+    const count = await Product.countDocuments({ ...keyword,...productCategory })
+    const products = await Product.find({ ...keyword,...productCategory })
         .limit(pageSize)   // how many product will be shown 
         .skip(pageSize * (page - 1))  // skipping products to be shown on next page; skip till
     

@@ -3,7 +3,6 @@ import dotenv from 'dotenv'
 import connectDB from '../config/db.js'
 import products from '../data/products.js'
 import users from '../data/users.js'
-import Order from '../models/orderModel.js'
 import Product from '../models/productModel.js'
 import User from '../models/userModel.js'
 
@@ -15,7 +14,7 @@ const insertData = async () => {
         // clearing all existed data
         await User.deleteMany()
         await Product.deleteMany()
-        await Order.deleteMany()
+        // await Order.deleteMany()
 
         // Add users
         const createdUsers = await User.insertMany(users)
@@ -40,7 +39,7 @@ const destroyData = async () => {
         // clearing all existed data
         await User.deleteMany()
         await Product.deleteMany()
-        await Order.deleteMany()
+        // await Order.deleteMany()
 
         console.log("Data Destroyed !!!");
 
