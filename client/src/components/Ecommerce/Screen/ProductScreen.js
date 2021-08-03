@@ -67,7 +67,7 @@ function ProductScreen({ match,history  }) {
                     <Col md={4}>
                     <ListGroup variant="flush">
                             <ListGroup.Item className="product_heading"><h2>{product.name}</h2></ListGroup.Item>
-                            <ListGroup.Item>{product.description}</ListGroup.Item>
+                            <ListGroup.Item className="product_desc">{product.description}</ListGroup.Item>
                             <ListGroup.Item><Rating value={product.rating} text={product.numReviews} /></ListGroup.Item>
                             <ListGroup.Item className="product_price"><span style={{fontSize:'2rem'}}>৳</span>&nbsp;{product.price}</ListGroup.Item>
                     </ListGroup>

@@ -10,9 +10,16 @@ main {
   margin-left: 1rem;
 }
 .product_heading h2 {
-  font-family: "Asap";
+  font-family: "Nunito";
+}
+.product_desc {
+  font-family: "Poppins";
+  font-weight: 300;
 }
 .product_price {
   font-size: 3rem;
   font-family: "Open Sans";
+}
+.product_name {
+  font-family: "Open Sans" !important;
 }

@@ -2,7 +2,7 @@ import React from 'react'
 import { Dropdown, DropdownButton } from 'react-bootstrap'
 
 function FilterCategory({ handleCategoryChange }) {
-    const categoryList = ["Plant","Flower","Seed","Pesticides","Tools"]
+    const categoryList = ["Plant","Flower","Seed","Pesticide","Tool"]
     return (
         <>
             <DropdownButton  

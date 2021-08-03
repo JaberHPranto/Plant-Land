@@ -1,6 +1,7 @@
 import React from 'react'
 import { Button, Card } from 'react-bootstrap'
 import { Link, useHistory } from 'react-router-dom'
+import "../../styles/ecommerce.css"
 import Rating from './Rating'
 
 function Product({ product }) {
@@ -17,7 +18,7 @@ function Product({ product }) {
                 <Card.Img variant="top" src={product.image} />
             </Link>    
             <Card.Body>
-                    <Card.Title>{product.name}</Card.Title>    
+                    <Card.Title className="product_name">{product.name}</Card.Title>    
                 <Card.Text as='div' className='my-3'>
                     <Rating value={product.rating} text={product.numReviews}/>
                 </Card.Text>
