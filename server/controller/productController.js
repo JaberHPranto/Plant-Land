@@ -7,29 +7,54 @@ import User from '../models/userModel.js'
 export const getProducts = asyncHandler(async (req, res) => {
 
     // for pagination
-    const pageSize = 16
+    const pageSize = 25
     const page = req.query.pageNumber || 1
 
+    // for search
     const keyword = req.query.keyword ? {
         name: {
             $regex: req.query.keyword,
             $options:'i'
         }
     } : {}
-    
+
+    // for filter by category
     const productCategory = req.query.category ? {
         category: {
             $regex: req.query.category
         }
     }:{}
 
+    // for sorting
+    // let sortFilter = ""
+    // if (req.query.sort) {
+    //     console.log(req.query.sort);
+    //     // if(sortFilter === req.query.sort) sortFilter=""
+    //     // else {
+    //         if (req.query.sort === "lowest") sortFilter = "price : 1"
+    //         else if (req.query.sort === "highest") sortFilter = "price : -1"
+    //         else if (req.query.sort === "rating") sortFilter = "rating : -1"
+    //         else if (req.query.sort === "newest") sortFilter = "createdAt : -1"
+    //     // }
+    // }
+
+
+    
     const count = await Product.countDocuments({ ...keyword,...productCategory })
-    const products = await Product.find({ ...keyword,...productCategory })
+    let products = await Product.find({ ...keyword, ...productCategory })
         .limit(pageSize)   // how many product will be shown 
         .skip(pageSize * (page - 1))  // skipping products to be shown on next page; skip till
+
+    if (req.query.sort) {
+        const sortFilter = req.query.sort
+        if(sortFilter === "lowest") products.sort(dynamicSort("price"))
+        else if(sortFilter === "highest") products.sort(dynamicSort("-price"))
+        else if(sortFilter === "rating") products.sort(dynamicSort("-rating"))
+        else if(sortFilter === "newest") products.sort(dynamicSort("-createdAt"))
+    }
     
     const numOfPages = Math.ceil(count/pageSize)
-       
+
     res.json({ products, page, numOfPages })
 })
 
@@ -147,3 +172,18 @@ export const updateProduct = (async (req, res) => {
         res.status(404).json({message:"Failed to create a product"})
     }
 })
+
+
+// Filtering products - SortBy
+// https://stackoverflow.com/questions/1129216/sort-array-of-objects-by-string-property-value
+function dynamicSort(property) {
+    var sortOrder = 1;
+    if(property[0] === "-") {
+        sortOrder = -1;
+        property = property.substr(1);
+    }
+    return function (a,b) {
+        var result = (a[property] < b[property]) ? -1 : (a[property] > b[property]) ? 1 : 0;
+        return result * sortOrder;
+    }
+}

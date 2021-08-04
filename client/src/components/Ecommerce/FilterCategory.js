@@ -15,6 +15,8 @@ function FilterCategory({ handleCategoryChange }) {
                     <Dropdown.Item key={category} eventKey={category}>{category}</Dropdown.Item>
                 ))}
 
+                <Dropdown.Item key="soil" eventKey="soil">Soil and Fertilizer</Dropdown.Item>
+
             </DropdownButton>
         </>
 

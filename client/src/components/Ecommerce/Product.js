@@ -23,8 +23,8 @@ function Product({ product }) {
                     <Rating value={product.rating} text={product.numReviews}/>
                 </Card.Text>
 
-                <Card.Text as='h5'>
-                     <span style={{fontSize:'1.8rem'}}>৳</span>&nbsp;{product.price}
+                <Card.Text as='h5' className="product_name">
+                     <span style={{fontSize:'1.3rem'}}>৳</span>&nbsp;{product.price}
                 </Card.Text>
 
                 <Button className="bg-col-primary" onClick={()=>HandleViewDetails(product._id)} >View Details</Button>
