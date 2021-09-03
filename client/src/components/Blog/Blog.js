@@ -1,6 +1,5 @@
 import React from 'react'
 import { Col, Row } from 'react-bootstrap'
-import blogHome from '../../images/blogHome.jpg'
 import '../../styles/blog.css'
 import BlogCard from './BlogCard'
 
@@ -10,25 +9,28 @@ function Blog() {
     return (
         <>
             <div className="blog-home">              
-                <img className="blog-home-img" src={blogHome} alt="blog-home" />
+                <div className="blog-home-img">
+                    <h1>Blogs</h1>
+                    <p>We all need a little green in our lives</p>
+                </div>
                 <div className="blog-home-text">
                     <h3>Latest Articles</h3>
                     <p>Discover the most outstanding articles in all topics related to Plants</p>
                 </div>
                 
                 <Row className="blog-row">
-                    <Col md={2}>
+                    <Col md={2} xs={12}>
                         <div className='blog-category'>
                             <h5>Category</h5>
                             {blogCategories.map(blog => (
-                                <div>{blog}</div>
+                                <div key={blog}>{blog}</div>
                             ))}
                         </div>
                     </Col>
-                    <Col md={10}>
+                    <Col md={10} xs={12}>
                         <Row>
                             {num.map(n => (
-                                <Col xs={12} sm={6} md={6} lg={4} className='blog-card'>
+                                <Col key={n} xs={12} md={6} lg={4} xl={4} className='blog-card'>
                                     <BlogCard />
                                 </Col>
                             ))}
