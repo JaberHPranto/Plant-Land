@@ -27,11 +27,16 @@ code {
     monospace;
 }
 
+.bg-pm-col-only {
+  background-color: var(--color-primary-1);
+}
 .bg-col-primary {
   background-color: var(--color-primary-1);
-  /* background-color: #37ae5b; */
 }
-
+.bg-col-primary:hover {
+  background-color: #00c073 !important;
+  border: 1px solid #00c073;
+}
 .dropdown-item:hover {
   background-color: var(--color-primary-2);
 }

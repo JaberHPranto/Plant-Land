@@ -3,6 +3,7 @@ import { Container } from "react-bootstrap";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 // Blog Section
 import Blog from "../components/Blog/Blog";
+import NewBlog from "../components/Blog/NewBlog";
 // E-Commerce Section
 import Footer from "../components/Ecommerce/Footer";
 import Header from '../components/Ecommerce/Header';
@@ -53,8 +54,8 @@ function MainPage() {
           <Route path="/placeorder" component={PlaceOrderScreen} />
           <Route path="/payment" component={PaymentScreen} />
         </Container>
-        <Route path="/blog" component={Blog} />
-        
+        <Route path="/blog/new" component={NewBlog} />
+        <Route path="/blog" exact component={Blog} />
       </main>
         <Footer />
     </Router>

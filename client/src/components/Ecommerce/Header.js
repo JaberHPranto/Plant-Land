@@ -21,7 +21,7 @@ function Header() {
     
     return (
         <>
-            <Navbar collapseOnSelect expand="lg" variant="dark" className="bg-col-primary">
+            <Navbar collapseOnSelect expand="lg" variant="dark" className="bg-pm-col-only">
                 <Container>
                     <LinkContainer to="/market">
                         <Navbar.Brand>Plant Land</Navbar.Brand>
