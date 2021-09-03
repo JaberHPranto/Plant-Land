@@ -7,7 +7,7 @@ import User from '../models/userModel.js'
 export const getProducts = asyncHandler(async (req, res) => {
 
     // for pagination
-    const pageSize = 25
+    const pageSize = 50
     const page = req.query.pageNumber || 1
 
     // for search

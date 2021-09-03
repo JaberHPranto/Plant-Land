@@ -1,0 +1,33 @@
+.blog-home {
+  margin-top: -1.5rem;
+}
+.blog-home-img {
+  width: 100%;
+  height: 40vh;
+  object-fit: cover;
+  filter: brightness(70%);
+}
+.blog-home-text {
+  margin-top: 2rem;
+  margin-left: 1rem;
+}
+.blog-home-text h3 {
+  font-size: 2.5rem;
+  color: #333;
+}
+.blog-home-text p {
+  font-size: 1.3rem;
+  font-family: "Nunito" !important;
+}
+.blog-row {
+  margin-left: 0.5rem !important;
+  margin-right: 0 !important;
+}
+.blog-category {
+}
+.blog-category h5 {
+  font-size: 1.5rem;
+}
+.blog-card {
+  margin-bottom: 2rem;
+}

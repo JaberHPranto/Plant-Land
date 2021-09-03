@@ -1,6 +1,9 @@
 import React from "react";
 import { Container } from "react-bootstrap";
 import { BrowserRouter as Router, Route } from "react-router-dom";
+// Blog Section
+import Blog from "../components/Blog/Blog";
+// E-Commerce Section
 import Footer from "../components/Ecommerce/Footer";
 import Header from '../components/Ecommerce/Header';
 import CartScreen from '../components/Ecommerce/Screen/CartScreen';
@@ -18,11 +21,13 @@ import ProfileScreen from '../components/Ecommerce/Screen/ProfileScreen';
 import RegisterScreen from '../components/Ecommerce/Screen/RegisterScreen';
 import ShippingScreen from "../components/Ecommerce/Screen/ShippingScreen";
 import UserListScreen from "../components/Ecommerce/Screen/UserListScreen";
-import LandingPage from '../pages/LandingPage';
 import '../styles/ecommerce.css';
+// Landing Page
+import LandingPage from './LandingPage';
 
 
-function EcommercePage() {
+
+function MainPage() {
   return (
     <Router>
         <Header />
@@ -48,9 +53,11 @@ function EcommercePage() {
           <Route path="/placeorder" component={PlaceOrderScreen} />
           <Route path="/payment" component={PaymentScreen} />
         </Container>
+        <Route path="/blog" component={Blog} />
+        
       </main>
         <Footer />
     </Router>
   )
 }
-export default EcommercePage;
+export default MainPage;
