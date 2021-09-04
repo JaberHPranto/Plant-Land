@@ -113,3 +113,74 @@
   cursor: pointer;
 }
 /* --------- */
+
+/* Blog Create Post */
+.write {
+  padding-top: 2.5rem;
+  position: relative;
+}
+.writeImage {
+  margin-left: 9rem;
+  width: 80vw;
+  height: 20rem;
+  border-radius: 10px;
+  object-fit: cover;
+}
+.writeForm {
+  position: relative;
+}
+.writeFormGroup {
+  margin-left: 9rem;
+}
+.writeIcon {
+  height: 1.7rem;
+  width: 1.7rem;
+  border-radius: 50%;
+  border: 1px solid #333;
+  color: #333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.3rem;
+  cursor: pointer;
+}
+.writeInput {
+  font-size: 1.8rem;
+  border: none;
+  padding: 20px;
+  width: 80vw;
+}
+.writeInput:focus {
+  outline: none;
+}
+.writeTitle {
+  font-family: "Nunito";
+  font-weight: bold;
+  font-size: 2.5rem !important;
+}
+.writeText {
+  font-size: 1.3rem;
+  font-family: "Poppins";
+  opacity: 0.9;
+}
+.writeTags {
+  font-size: 1.2rem;
+}
+.writeSubmit {
+  position: absolute;
+  top: 30px;
+  right: 50px;
+}
+.writeCategory {
+  margin-left: 9rem;
+  width: 80vw;
+}
+.blogBack {
+  position: absolute;
+  top: -4px;
+  left: 8px;
+  font-size: 0.8rem !important;
+  background-color: #f3f4f6 !important;
+  color: #333 !important;
+  border: 1px solid #f3f4f6 !important;
+}
