@@ -123,6 +123,8 @@ dropdown {
   justify-content: space-between;
   align-items: center;
   font-size: 1.2rem;
+  margin-left: 5px;
+  font-family: "nunito" !important;
 }
 
 .dropdown-body {

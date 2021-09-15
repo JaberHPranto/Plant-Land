@@ -10,7 +10,7 @@ function Blog() {
     const history = useHistory()
 
     function handleCreateBlog(){
-        history.push("/blog/new")
+        history.push("/newblog")
     }
     return (
         <>

@@ -57,9 +57,9 @@ function MainPage() {
           <Route path="/payment" component={PaymentScreen} />
         </Container>
         {/* Blog Routes */}
-        <Route path="/blog/new" component={NewBlog} />
         <Route path="/blog" exact component={Blog} />
-        <Route path="/blog/:id" exact component={BlogDetails} />
+        <Route path="/newblog" component={NewBlog} />
+        <Route path="/blog/:id" component={BlogDetails} />
       </main>
         <Footer />
     </Router>
