@@ -184,3 +184,72 @@
   color: #333 !important;
   border: 1px solid #f3f4f6 !important;
 }
+
+/* -------- */
+/* Blog Details */
+.blog-det-container {
+  position: relative;
+}
+.blog-det-image {
+  width: 85vw;
+  height: 25rem;
+  border-radius: 10px;
+  object-fit: cover;
+}
+.blog-det-title {
+  font-family: "Nunito";
+  font-weight: bold;
+  font-size: 3.5rem !important;
+  margin-top: 1rem;
+  /* text-align: center; */
+  color: #333;
+}
+.blog-det-info {
+  font-size: 1.5rem;
+  font-family: "Source Sans Pro";
+  display: flex;
+  margin-top: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(153, 153, 153, 0.728);
+}
+.blog-det-info > * {
+  margin-right: 1.3rem;
+}
+.info-span {
+  font-weight: bold;
+}
+.blog-det-desc {
+  font-size: 1.3rem;
+  font-family: "Poppins";
+  color: #555;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+.blog-det-tags {
+  padding-top: 1rem;
+  border-top: 1px solid rgba(153, 153, 153, 0.728);
+}
+.blog-det-badge {
+  font-size: 1.2rem !important;
+  margin-right: 0.8rem;
+}
+.blog-det-icons {
+  position: absolute;
+  top: 28rem;
+  right: 0px;
+}
+.blog-det-like,
+.blog-det-comments {
+  font-size: 1.6rem;
+  background-color: #f3f4f6;
+  padding: 0.6rem 1.3rem;
+  border-radius: 20px;
+}
+.blog-det-like span,
+.blog-det-comments span {
+  font-family: "Nunito";
+  font-size: 1.4rem;
+}
+.blog-det-like {
+  margin-right: 1.1rem;
+}

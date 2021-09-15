@@ -39,7 +39,7 @@ function Blog() {
                             <h4>Discover Tags</h4>
                             <div className="blog-tag-div">
                                 {blogTags.map(tag => (
-                                    <div className="blog-tag">{tag}</div>
+                                    <div key={tag} className="blog-tag">{tag}</div>
                                 ))}
                             </div>
                         </div>

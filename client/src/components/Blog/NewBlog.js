@@ -5,9 +5,7 @@ import BlogDropdown from './BlogCategory'
 
 function NewBlog() {
     const history = useHistory()
-    function backToBlog() {
-        history.push("/blog")
-    }
+
     return (
         <div className="write">
             <img className="writeImage"
