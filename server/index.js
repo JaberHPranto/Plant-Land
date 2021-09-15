@@ -5,6 +5,7 @@ import morgan from "morgan";
 import path from 'path';
 import connectDB from "./config/db.js";
 import { errorHandler, notFound } from "./middlewares/errorMiddleware.js";
+import blogRoutes from "./routes/blogRoute.js";
 import orderRoutes from "./routes/orderRoutes.js";
 import productRoutes from "./routes/productRoutes.js";
 import uploadRoutes from "./routes/uploadRoutes.js";
@@ -31,6 +32,7 @@ app.use("/api/products", productRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/orders", orderRoutes);
 app.use("/api/uploads", uploadRoutes);
+app.use("/api/blogs", blogRoutes);
 
 // static folder
 const __dirname = path.resolve()
