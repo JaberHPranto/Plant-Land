@@ -1,13 +1,24 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Button, Col, Row } from 'react-bootstrap'
+import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
+import { fetchBlogs } from '../../redux/actions/blogActions'
 import '../../styles/blog.css'
+import Loader from '../Ecommerce/Loader'
 import BlogCard from './BlogCard'
 import { blogCategories, blogTags } from './BlogSeedData'
 
 function Blog() {
-    const num = [1, 2, 3, 4, 5]
+
     const history = useHistory()
+    const dispatch = useDispatch()
+
+    const blogList = useSelector(state => state.blogList)
+    const { loading, blogs} = blogList
+
+    useEffect(() => {
+        dispatch(fetchBlogs())
+    }, [dispatch])
 
     function handleCreateBlog(){
         history.push("/newblog")
@@ -44,15 +55,17 @@ function Blog() {
                             </div>
                         </div>
                     </Col>
-                    <Col md={10} xs={12}>
-                        <Row>
-                            {num.map(n => (
-                                <Col key={n} xs={12} md={6} lg={4} xl={4} className='blog-card'>
-                                    <BlogCard />
-                                </Col>
-                            ))}
-                        </Row>
-                    </Col>
+                    {loading ? <Loader /> :  (
+                        <Col md={10} xs={12}>
+                            <Row>
+                                {blogs && blogs.map((blog,index) => (
+                                    <Col key={index} xs={12} md={6} lg={4} xl={4} className='blog-card'>
+                                        <BlogCard blog={blog}/>
+                                    </Col>
+                                ))}
+                            </Row>
+                        </Col>
+                    )}
                 </Row> 
             </div>
         </>

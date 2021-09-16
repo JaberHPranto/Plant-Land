@@ -25,3 +25,14 @@ export const postBlogs = async (req, res) => {
         })
     }
 }
+
+// get a blog by id
+export const getBlogById = async (req, res) => {
+    try {
+        const blog = await BlogPost.findById(req.params.id)
+        res.status(200).json(blog)
+        
+    } catch (err) {
+        res.status(404).json({ message: "No blog found" })
+    }
+}
