@@ -24,10 +24,6 @@ function HomeScreen({ match }) {
     const category = productCategory
     const sort = productSort
 
-    console.log("Category :",category);
-    console.log("Sort :",sort);
-
-
     useEffect(() => {
         dispatch(fetchProducts(keyword,pageNumber,category,sort))
     }, [dispatch,keyword,pageNumber,category,sort])

@@ -43,3 +43,41 @@ export const fetchBlogById = (id) => async (dispatch) => {
     }
 
 }
+
+// Create blog
+export const createBlog = (blogData) => async (dispatch,getState) => {
+
+    try {
+        // dispatch({
+        //     type:BLOG_CREATE_REQUEST
+        // })
+
+        const { userLogin: { userInfo } } = getState()
+        
+        
+        const config = {
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${userInfo.token}`
+            }
+        }
+
+        const { data } = await axios.post(`/api/blogs`,blogData,config)
+
+        console.log(data);
+        // dispatch({
+        //     type: BLOG_CREATE_SUCCESS,
+        //     payload:data
+        // })
+        
+    } catch (error) {
+        console.log(error);
+        // dispatch({
+        //     type: PRODUCT_CREATE_FAIL,
+        //     payload: error.response && error.response.data.message ? error.response.data.message : error.message
+            
+        // })
+        
+    }
+    
+}

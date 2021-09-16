@@ -12,7 +12,7 @@ function BlogCard({ blog }) {
         <div>
             <Card style={{ width: '24rem', minWidth: '18rem' }}>
                 <Link to={`/blog/${blog._id}`}>
-                <Card.Img style={{ padding: '0.7rem' }} variant="top" src="https://images.unsplash.com/photo-1520121401995-928cd50d4e27?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80" />
+                <Card.Img style={{ padding: '0.7rem',height:'20rem'}} variant="top" src={blog.image} />
                     
                 </Link>
                 <Card.Body>

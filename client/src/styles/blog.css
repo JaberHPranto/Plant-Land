@@ -210,8 +210,6 @@
   font-family: "Source Sans Pro";
   display: flex;
   margin-top: 1rem;
-  padding-bottom: 0.5rem;
-  border-bottom: 1px solid rgba(153, 153, 153, 0.728);
 }
 .blog-det-info > * {
   margin-right: 1.3rem;
@@ -234,10 +232,11 @@
   font-size: 1.2rem !important;
   margin-right: 0.8rem;
 }
-.blog-det-icons {
-  position: absolute;
-  top: 28rem;
-  right: 0px;
+.blog-det-info-div {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(153, 153, 153, 0.728);
 }
 .blog-det-like,
 .blog-det-comments {

@@ -9,7 +9,7 @@ const data = [{ id: "plant", label: "Plant" },
     { id: "others", label: "Others" },
 ];
 
-const BlogCategory = () => {
+const BlogCategory = ({onCategorySelect}) => {
   const [isOpen, setOpen] = useState(false);
   const [items] = useState(data);
   const [selectedItem, setSelectedItem] = useState(null);
@@ -17,7 +17,7 @@ const BlogCategory = () => {
   const toggleDropdown = () => setOpen(!isOpen);
   
     const handleItemClick = (id) => {
-    console.log(id);
+    onCategorySelect(id)
     selectedItem === id ? setSelectedItem(null) : setSelectedItem(id);
   }
   

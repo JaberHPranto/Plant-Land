@@ -1,4 +1,5 @@
 import BlogPost from '../models/blogModel.js';
+import User from '../models/userModel.js';
 // Get all blog posts
 export const getBlogs = async (req, res) => {
     try {
@@ -20,6 +21,7 @@ export const postBlogs = async (req, res) => {
         res.status(201).json(newPost)
         
     } catch (err) {
+        console.log(err);
         res.status(409).json({
             error: err.message
         })
@@ -30,6 +32,8 @@ export const postBlogs = async (req, res) => {
 export const getBlogById = async (req, res) => {
     try {
         const blog = await BlogPost.findById(req.params.id)
+        const blogCreator = await User.findById(blog.creator)
+        blog.author = blogCreator.name
         res.status(200).json(blog)
         
     } catch (err) {

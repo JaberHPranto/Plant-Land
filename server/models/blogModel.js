@@ -22,9 +22,10 @@ const blogSchema = mongoose.Schema({
         required:true
     },
     creator: String,
+    author:String,
     tags: [String],
     category:String,
-    selectedFile: String,
+    image: String,
     likes: {
         type: [String],
         default:[]
