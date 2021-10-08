@@ -2,12 +2,14 @@ import React, { useEffect, useState } from 'react'
 import { Col, Row } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchProducts } from '../../../redux/actions/productActions'
+import "../../../styles/ecommerce.css"
 import FilterCategory from '../FilterCategory'
 import FilterSort from "../FilterSort"
 import Loader from '../Loader'
 import Message from '../Message'
 import Paginate from '../Paginate'
 import Product from '../Product'
+import SearchBox from '../SearchBox'
 
 
 function HomeScreen({ match }) {
@@ -38,8 +40,18 @@ function HomeScreen({ match }) {
 
     return (
         <div>
-            <FilterCategory handleCategoryChange={handleCategoryChange} />
-            <FilterSort handleSortChange={handleSortChange}/>
+            <Row className="home-filter-info">
+                <Col xs={12} md={3} className='home-filter-dropdown'>
+                    <FilterCategory  handleCategoryChange={handleCategoryChange} />
+                </Col>
+                <Col xs={12} md={6} >
+                    <SearchBox />
+                </Col>
+                <Col xs={12} md={3} className='home-filter-dropdown'>
+                    <FilterSort handleSortChange={handleSortChange} />
+                </Col>
+            </Row>
+    
             <h2>Latest Products</h2>
 
             {loading ? <Loader /> : error ? <Message variant="danger">{error}</Message> : (

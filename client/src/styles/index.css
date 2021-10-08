@@ -154,6 +154,9 @@ dropdown {
 .dropdown-item-dot.selected {
   opacity: 1;
 }
+.home-submit-btn {
+  background-color: #00c073;
+}
 
 .icon {
   font-size: 13px;
@@ -164,4 +167,12 @@ dropdown {
 
 .icon.open {
   transform: rotate(90deg);
+}
+
+.ck-editor {
+  margin: 0 8rem !important;
+}
+
+.ck-editor__editable_inline {
+  min-height: 300px;
 }

@@ -24,3 +24,10 @@ main {
   font-family: "Open Sans" !important;
   color: #323232 !important;
 }
+.home-filter-info {
+  margin-bottom: 2rem;
+}
+.home-filter-dropdown .dropdown .dropdown-toggle {
+  background-color: #00c073 !important;
+  width: 100% !important;
+}

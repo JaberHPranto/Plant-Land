@@ -1,3 +1,5 @@
+import ClassicEditor from '@ckeditor/ckeditor5-build-classic'
+import { CKEditor } from '@ckeditor/ckeditor5-react'
 import axios from 'axios'
 import React, { useState } from 'react'
 import { Button } from 'react-bootstrap'
@@ -16,15 +18,19 @@ function NewBlog() {
     const [category, setCategory] = useState("")
     const [tags, setTags] = useState("")
     const [image, setImage] = useState("")
+    const [content, setContent] = useState("")
+
 
     const onCategorySelect = (category) => {
         setCategory(category)
     }
+
     const handleFormSubmit = (e) => {
         e.preventDefault()
+        console.log("off")
         const allTags = tags.split(",")
         const blogPost = {
-            title,description,category,tags:allTags,image
+            title,description:content,category,tags:allTags,image
         }
         try {
             dispatch(createBlog(blogPost))
@@ -82,9 +88,22 @@ function NewBlog() {
                 <div className="writeFormGroup">
                     <input type="text" name="tags" id="tags" className="writeInput writeTags" placeholder="Add tags, separated by comma..." value={tags} onChange={(e)=>setTags(e.target.value)}/>
                 </div>
-                <div className="writeFormGroup">
+                {/* <div className="writeFormGroup">
                     <textarea name="desc" id="desc" cols="60" rows="10" placeholder="Write about plants..." className="writeInput writeText" value={description} onChange={(e)=>setDescription(e.target.value)}></textarea>
-                </div>
+                </div> */}
+
+                {/* Editor */}
+                <CKEditor
+                    editor={ClassicEditor}
+                    data={content}
+                    config={{ckfinder:{uploadUrl:`http://localhost:5000/api/uploads/ck-image`}}}
+                    onChange={(event, editor) => {
+                        const data = editor.getData();
+                        console.log(data);
+                        setContent(data)
+                    } }
+                />
+
                 
                 <Button type='submit' className="writeSubmit bg-col-primary">Publish</Button>
             </form>

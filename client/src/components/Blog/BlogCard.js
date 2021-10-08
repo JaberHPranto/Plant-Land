@@ -1,5 +1,6 @@
 import React from 'react'
 import { Badge, Button, Card } from 'react-bootstrap'
+import ReactHtmlParser from 'react-html-parser'
 import { Link, useHistory } from 'react-router-dom'
 import "../../styles/blog.css"
 
@@ -21,7 +22,7 @@ function BlogCard({ blog }) {
                         <Badge key={index} className="blog-card-badge">{tag}</Badge>
                     ))}
                     <Card.Text className="blog-card-desc">
-                        {blog.description}
+                        {ReactHtmlParser(blog.description)}
                     </Card.Text>
 
                     <div style={{ display: 'flex', justifyContent:'space-between'}}>

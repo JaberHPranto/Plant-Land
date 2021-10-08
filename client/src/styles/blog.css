@@ -224,6 +224,12 @@
   margin-top: 2rem;
   margin-bottom: 2rem;
 }
+.blog-card-desc img {
+  display: none;
+}
+.blog-det-desc img {
+  width: 800px;
+}
 .blog-det-tags {
   padding-top: 1rem;
   border-top: 1px solid rgba(153, 153, 153, 0.728);

@@ -23,7 +23,7 @@ function SearchBox() {
                     name='q'
                     onChange={(e)=>setKeyword(e.target.value)}
                 ></Form.Control>
-                <Button className="btn btn-outline-light" type='submit' >Search</Button>
+                <Button className="btn btn-outline-light home-submit-btn" type='submit' >Search</Button>
             </Form>
         </>
     )

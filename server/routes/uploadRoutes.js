@@ -1,11 +1,15 @@
+import multiparty from 'connect-multiparty'
 import express from 'express'
 import multer from 'multer'
 import path from 'path'
 import cloudinary from '../utils/cloudinary.js'
 
 const router = express.Router()
+const hostUrl = `http://localhost:3000`
 
 const uploadPath = './uploads/'
+
+const multipartMiddleware = multiparty({uploadDir:uploadPath});
 
 const storage = multer.diskStorage({
     destination(req, file, cb) {
@@ -45,6 +49,21 @@ router.post('/', upload.single('image'), async (req, res) => {
         res.status(500).json({error:'Image Only'})
     }
 })
+
+router.post('/ck-image', multipartMiddleware, function(req, res) {
+    const tempFile = req.files.upload.path
+    console.log(req.files);
+    try {
+        res.status(200).json({
+            uploaded: true,
+            url: `${hostUrl}/${tempFile}`
+        })
+    } catch (err) {
+        console.log(err);
+        res.status(500).json("Couldn't upload the images")
+    }
+    
+});
 
 export default router
 

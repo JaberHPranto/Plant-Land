@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from 'react-redux'
 import { LinkContainer } from 'react-router-bootstrap'
 import { useHistory } from 'react-router-dom'
 import { logout } from '../../redux/actions/userActions'
-import SearchBox from './SearchBox'
 import { toastErrorMessage } from './ToastMessage'
 
 
@@ -23,16 +22,16 @@ function Header() {
         <>
             <Navbar collapseOnSelect expand="lg" variant="dark" className="bg-pm-col-only">
                 <Container>
-                    <LinkContainer to="/market">
+                    <LinkContainer to="/">
                         <Navbar.Brand>Plant Land</Navbar.Brand>
                     </LinkContainer>    
                 
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
                         
-                        <Nav className="me-auto">
-                            <SearchBox />
-                    </Nav>
+                        <Nav className="me-auto">  
+                        </Nav>
+    
                     <Nav>
                         <LinkContainer to="/cart">
                             <Nav.Link><i className="fas fa-shopping-cart"></i>Cart</Nav.Link>   
