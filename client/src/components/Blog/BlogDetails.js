@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react'
 import { Badge, Container } from 'react-bootstrap'
+import ReactHtmlParser from 'react-html-parser'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchBlogById } from '../../redux/actions/blogActions'
-import '../../styles/blog.css'
+import '../../styles/bl2og.css'
 import Loader from '../Ecommerce/Loader'
 import Message from '../Ecommerce/Message'
 
@@ -37,7 +38,7 @@ function BlogDetails({match}) {
                     </div>
                     
                     <div className='blog-det-desc'>
-                        {blog.description}
+                        {ReactHtmlParser(blog.description)}
                     </div>
                     <div className="blog-det-tags">
                         {blog.tags && blog.tags.map((tag, index) => (                      
