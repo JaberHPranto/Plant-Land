@@ -1,0 +1,98 @@
+.search {
+  width: 100%;
+  position: relative;
+  display: flex;
+}
+
+.searchTerm {
+  width: 100%;
+  border: 3px solid var(--color-primary-1);
+  border-right: none;
+  padding: 5px;
+  height: 50px;
+  border-radius: 5px 0 0 5px;
+  outline: none;
+  color: #9dbfaf;
+  font-size: 1.2rem;
+  font-family: "Poppins";
+}
+
+.searchTerm:focus {
+  color: var(--color-primary-1);
+}
+
+.searchButton {
+  width: 50px;
+  height: 50px;
+  border: 1px solid var(--color-primary-1);
+  background: var(--color-primary-1);
+  text-align: center;
+  color: #fff;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+/*Resize the wrap to see the search bar change!*/
+.wrap {
+  width: 30%;
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.search-nf {
+  position: absolute;
+  top: 50%;
+  left: 43%;
+  height: 12rem;
+}
+.search-text-nf {
+  position: absolute;
+  top: 82%;
+  left: 47%;
+  color: var(--color-primary-1);
+}
+.ps-container {
+  background-color: white;
+  width: 100%;
+  position: absolute;
+  top: 55%;
+  padding-left: 1rem;
+}
+.ps-card {
+  background-color: #f3f4f6;
+  height: 10rem;
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  display: flex;
+}
+.ps-card-info > * {
+  font-size: 1.2rem;
+}
+.ps-card-info {
+  margin: auto 0;
+  margin-left: 1rem;
+}
+.ps-card-name {
+  font-size: 1.5rem;
+  font-weight: bold;
+  font-family: "Nunito";
+}
+.ps-card-bi-name span {
+  font-weight: bold;
+  font-size: 1.1rem;
+  margin-right: 4px;
+}
+.ps-card-bi-name {
+  font-size: 1.2rem;
+  font-family: "Open Sans";
+}
+.ps-table-info {
+  /* color: red !important; */
+  font-family: "Poppins";
+}
+.ps-table-info tr td:first-child {
+  width: 17% !important;
+  font-weight: bold !important;
+}

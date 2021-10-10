@@ -23,10 +23,12 @@ import ProfileScreen from '../components/Ecommerce/Screen/ProfileScreen';
 import RegisterScreen from '../components/Ecommerce/Screen/RegisterScreen';
 import ShippingScreen from "../components/Ecommerce/Screen/ShippingScreen";
 import UserListScreen from "../components/Ecommerce/Screen/UserListScreen";
+import PlantDetails from "../components/PlantSearch/PlantDetails";
+// Plant Search Page
+import PlantSearch from "../components/PlantSearch/PlantSearch";
 import '../styles/ecommerce.css';
 // Landing Page
 import LandingPage from './LandingPage';
-
 
 
 function MainPage() {
@@ -60,6 +62,9 @@ function MainPage() {
         <Route path="/blog" exact component={Blog} />
         <Route path="/newblog" component={NewBlog} />
         <Route path="/blog/:id" component={BlogDetails} />
+        {/* Plant Search */}
+        <Route path="/search-plant" exact component={PlantSearch} />
+        <Route path="/search-plant/:id" exact component={PlantDetails} />
       </main>
         <Footer />
     </Router>
