@@ -3,7 +3,7 @@ import { Badge, Container } from 'react-bootstrap'
 import ReactHtmlParser from 'react-html-parser'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchBlogById } from '../../redux/actions/blogActions'
-import '../../styles/bl2og.css'
+import '../../styles/blog.css'
 import Loader from '../Ecommerce/Loader'
 import Message from '../Ecommerce/Message'
 

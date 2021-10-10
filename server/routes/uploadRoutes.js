@@ -50,13 +50,13 @@ router.post('/', upload.single('image'), async (req, res) => {
     }
 })
 
-router.post('/ck-image', multipartMiddleware, function(req, res) {
+router.post('/ck-image', multipartMiddleware, async function(req, res) {
     const tempFile = req.files.upload.path
-    console.log(req.files);
     try {
         res.status(200).json({
             uploaded: true,
             url: `${hostUrl}/${tempFile}`
+         
         })
     } catch (err) {
         console.log(err);

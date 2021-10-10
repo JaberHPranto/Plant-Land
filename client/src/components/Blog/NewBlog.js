@@ -14,7 +14,6 @@ function NewBlog() {
     const dispatch = useDispatch()
 
     const [title, setTitle] = useState("")
-    const [description, setDescription] = useState("")
     const [category, setCategory] = useState("")
     const [tags, setTags] = useState("")
     const [image, setImage] = useState("")
@@ -62,7 +61,7 @@ function NewBlog() {
     
     const clearInputs = () => {
         setTitle("")
-        setDescription("")
+        setContent("")
         setTags("")
         setCategory("")
         setImage("")
