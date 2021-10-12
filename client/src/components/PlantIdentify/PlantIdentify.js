@@ -29,8 +29,12 @@ function PlantIdentify() {
         }
     }
 
-    // console.log(imageUrl);
-    console.log(plantSuggestion);
+    const covertNumber = (num) => {
+        let n = num.toFixed(2)
+        n *= 100
+        if (n.toString().length > 2) n = n.toFixed()
+        return `${n} %`
+    }
 
     
     return (
@@ -80,7 +84,8 @@ function PlantIdentify() {
                                 </Col>
                                 <Col md={2} sm={6}>
                                     <div className="pi-probability">
-                                        <p>{`${((plant.probability).toFixed(2)) * 100} %`}</p>
+                                        {/* <p>{`${((plant.probability).toFixed(2)) * 100} %`}</p> */}
+                                        <p>{covertNumber(plant.probability)}</p>
                                     </div>
                                     
                                 </Col>

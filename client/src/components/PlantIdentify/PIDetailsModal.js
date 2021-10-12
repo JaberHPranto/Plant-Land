@@ -21,7 +21,7 @@ function PIDetailsModal({ name, desc, synonyms, taxonomy, authority, common_name
         </Modal.Header>
         <Modal.Body className="pi-mb">
           <h5>Common Names</h5>
-                  {common_names.map(cn => (
+                  {common_names?.map(cn => (
                       <div key={cn} className="pi-mb-cn">{cn}</div>
                   ))}
         </Modal.Body>
@@ -44,7 +44,7 @@ function PIDetailsModal({ name, desc, synonyms, taxonomy, authority, common_name
         
         <Modal.Body className="pi-mb">
           <h5>Synonyms</h5>
-                  {synonyms.map(syn => (
+                  {synonyms?.map(syn => (
                       <div className="pi-mb-syn" key={syn}>{syn}</div>
                   ))}
         </Modal.Body>
