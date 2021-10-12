@@ -15,11 +15,10 @@ function PlantDetails({ match }) {
         fetchPlant()
 
     }, [match])
-    console.log(plantData)
     return (
         <div>
             {plantData && (
-                <Table striped bordered>
+                <Table striped bordered style={{marginTop:'-1.5rem'}}>
                     <thead>
                     </thead>
                     <tbody className='ps-table-info'>
@@ -53,11 +52,11 @@ function PlantDetails({ match }) {
                             </tr>
                             <tr>
                                 <td>Row Spacing</td>
-                                <td>{plantData.attributes.row_spacing}</td>
+                                <td>{plantData.attributes.row_spacing} cm</td>
                             </tr>
                             <tr>
                                 <td>Height</td>
-                                <td>{plantData.attributes.height}</td>
+                                <td>{plantData.attributes.height} cm</td>
                             </tr>
                        
                     </tbody>

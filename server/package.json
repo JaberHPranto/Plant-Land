@@ -11,6 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.22.0",
     "bcrypt": "^5.0.1",
     "cloudinary": "^1.26.2",
     "concurrently": "^6.2.0",

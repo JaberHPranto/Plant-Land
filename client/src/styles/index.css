@@ -31,7 +31,7 @@ code {
   background-color: var(--color-primary-1);
 }
 .bg-col-primary {
-  background-color: var(--color-primary-1);
+  background-color: var(--color-primary-1) !important;
 }
 .bg-col-primary:hover {
   background-color: #00c073 !important;
@@ -175,4 +175,16 @@ dropdown {
 
 .ck-editor__editable_inline {
   min-height: 300px;
+}
+
+.close {
+  /* background-color: #fff !important; */
+  display: none;
+  font-size: 1rem !important;
+  width: 3rem !important;
+  border: none !important;
+  outline: none !important;
+  background-color: transparent !important;
+}
+.pi-det-btn {
 }

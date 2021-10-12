@@ -5,7 +5,7 @@ const router = express.Router()
 
 router.get("/", getBlogs)
 router.post("/", isLoggedIn, postBlogs)
-router.get("/:id",getBlogById)
+router.get("/:id", getBlogById)
 
 
 export default router

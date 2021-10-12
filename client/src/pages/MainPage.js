@@ -23,6 +23,7 @@ import ProfileScreen from '../components/Ecommerce/Screen/ProfileScreen';
 import RegisterScreen from '../components/Ecommerce/Screen/RegisterScreen';
 import ShippingScreen from "../components/Ecommerce/Screen/ShippingScreen";
 import UserListScreen from "../components/Ecommerce/Screen/UserListScreen";
+import PlantIdentify from "../components/PlantIdentify/PlantIdentify";
 import PlantDetails from "../components/PlantSearch/PlantDetails";
 // Plant Search Page
 import PlantSearch from "../components/PlantSearch/PlantSearch";
@@ -65,6 +66,9 @@ function MainPage() {
         {/* Plant Search */}
         <Route path="/search-plant" exact component={PlantSearch} />
         <Route path="/search-plant/:id" exact component={PlantDetails} />
+        {/* Plant Identify */}
+        <Route path="/identify-plant" exact component={PlantIdentify} />
+
       </main>
         <Footer />
     </Router>
