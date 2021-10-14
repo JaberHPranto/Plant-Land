@@ -1,5 +1,5 @@
 import {
-  ORDER_CREATE_FAIL, ORDER_CREATE_REQUEST, ORDER_CREATE_SUCCESS, ORDER_LIST_FAIL, ORDER_LIST_REQUEST, ORDER_LIST_SUCCESS
+  ORDER_CREATE_FAIL, ORDER_CREATE_REQUEST, ORDER_CREATE_SUCCESS, ORDER_DATA_FAIL, ORDER_DATA_REQUEST, ORDER_DATA_SUCCESS, ORDER_LIST_FAIL, ORDER_LIST_REQUEST, ORDER_LIST_SUCCESS, ORDER_SALE_DATA_FAIL, ORDER_SALE_DATA_REQUEST, ORDER_SALE_DATA_SUCCESS
 } from "../../constants/orderConstants";
 
 export const orderCreateReducer = (state = {}, action) => {
@@ -37,6 +37,42 @@ export const orderListReducer = (state = { orders: [] }, action) => {
             return { loading: false, orders: action.payload }
         
         case ORDER_LIST_FAIL:
+            return { loading: false, error: action.payload }
+        
+        
+        default:
+            return state
+    }
+}
+
+
+export const orderDataReducer = (state = { orderData: [] }, action) => {
+    switch (action.type) {
+        case ORDER_DATA_REQUEST:
+            return { ...state,loading: true }
+        
+        case ORDER_DATA_SUCCESS:
+            return { loading: false, orderData: action.payload }
+        
+        case ORDER_DATA_FAIL:
+            return { loading: false, error: action.payload }
+        
+        
+        default:
+            return state
+    }
+}
+
+
+export const orderSaleDataReducer = (state = { orderSaleData: [] }, action) => {
+    switch (action.type) {
+        case ORDER_SALE_DATA_REQUEST:
+            return { ...state,loading: true }
+        
+        case ORDER_SALE_DATA_SUCCESS:
+            return { loading: false, orderSaleData: action.payload }
+        
+        case ORDER_SALE_DATA_FAIL:
             return { loading: false, error: action.payload }
         
         

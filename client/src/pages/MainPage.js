@@ -12,6 +12,7 @@ import CartScreen from '../components/Ecommerce/Screen/CartScreen';
 import ForgetPasswordScreen from '../components/Ecommerce/Screen/ForgetPasswordScreen';
 import HomeScreen from '../components/Ecommerce/Screen/HomeScreen';
 import LoginScreen from '../components/Ecommerce/Screen/LoginScreen';
+import OrderDataScreen from "../components/Ecommerce/Screen/OrderDataScreen";
 import OrderListScreen from "../components/Ecommerce/Screen/OrderListScreen";
 import PasswordResetScreen from '../components/Ecommerce/Screen/PasswordResetScreen';
 import PaymentScreen from "../components/Ecommerce/Screen/PaymentScreen";
@@ -21,6 +22,7 @@ import ProductListScreen from "../components/Ecommerce/Screen/ProductListScreen"
 import ProductScreen from '../components/Ecommerce/Screen/ProductScreen';
 import ProfileScreen from '../components/Ecommerce/Screen/ProfileScreen';
 import RegisterScreen from '../components/Ecommerce/Screen/RegisterScreen';
+import SaleDataScreen from "../components/Ecommerce/Screen/SaleDataScreen";
 import ShippingScreen from "../components/Ecommerce/Screen/ShippingScreen";
 import UserListScreen from "../components/Ecommerce/Screen/UserListScreen";
 import PlantIdentify from "../components/PlantIdentify/PlantIdentify";
@@ -52,6 +54,8 @@ function MainPage() {
           <Route path="/admin/userlist" component={UserListScreen} />
           <Route path="/admin/productlist" component={ProductListScreen} />
           <Route path="/admin/orderlist" component={OrderListScreen} />
+          <Route path="/admin/orderData" component={OrderDataScreen} />
+          <Route path="/admin/saleData" component={SaleDataScreen} />
           <Route path="/admin/product/:id/edit" component={ProductEditScreen} />
           <Route path="/product/:id" component={ProductScreen} />
           <Route path="/cart/:id?" component={CartScreen} />

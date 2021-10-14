@@ -33,7 +33,6 @@ function RegisterScreen({location,history}) {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        console.log(name, email, password);
         dispatch(register(name,email,password,confirmPassword))
     }
 
