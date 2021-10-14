@@ -25,6 +25,7 @@ import RegisterScreen from '../components/Ecommerce/Screen/RegisterScreen';
 import SaleDataScreen from "../components/Ecommerce/Screen/SaleDataScreen";
 import ShippingScreen from "../components/Ecommerce/Screen/ShippingScreen";
 import UserListScreen from "../components/Ecommerce/Screen/UserListScreen";
+import Sidebar from "../components/Ecommerce/Sidebar";
 import PlantIdentify from "../components/PlantIdentify/PlantIdentify";
 import PlantDetails from "../components/PlantSearch/PlantDetails";
 // Plant Search Page
@@ -62,6 +63,7 @@ function MainPage() {
           <Route path="/shipping" component={ShippingScreen} />
           <Route path="/placeorder" component={PlaceOrderScreen} />
           <Route path="/payment" component={PaymentScreen} />
+          <Route path="/test" component={Sidebar} />
         </Container>
         {/* Blog Routes */}
         <Route path="/blog" exact component={Blog} />

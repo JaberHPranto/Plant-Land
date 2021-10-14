@@ -31,3 +31,134 @@ main {
   background-color: #00c073 !important;
   width: 100% !important;
 }
+
+/* Sidebar */
+.s-sidebar__trigger {
+  z-index: 20;
+  position: fixed;
+  top: 1;
+  right: 0;
+  width: 100%;
+  height: 4em;
+  background: transparent;
+}
+
+.s-sidebar__trigger > i {
+  display: inline-block;
+  margin: 0em 0 0 1.5em;
+  color: #f07ab0;
+}
+
+.s-sidebar__nav {
+  position: fixed;
+  top: 0em;
+  left: -15em;
+  overflow: hidden;
+  transition: all 0.3s ease-in;
+  width: 15em;
+  height: 100%;
+  background: #e0e2e7;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.s-sidebar__nav:hover,
+.s-sidebar__nav:focus,
+.s-sidebar__trigger:focus + .s-sidebar__nav,
+.s-sidebar__trigger:hover + .s-sidebar__nav {
+  left: 0;
+}
+
+.s-sidebar__nav ul {
+  position: absolute;
+  top: 4em;
+  left: 0;
+  margin: 0;
+  padding: 0;
+  width: 15em;
+}
+
+.s-sidebar__nav ul li {
+  width: 100%;
+}
+
+.s-sidebar__nav-link {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  height: 4em;
+  color: var(--color-primary-1);
+  font-family: "Poppins";
+  font-size: 1.1rem;
+  /* font-weight: bold; */
+}
+
+.s-sidebar__nav-link em {
+  position: absolute;
+  top: 50%;
+  left: 4em;
+  transform: translateY(-50%);
+  font-style: normal !important;
+}
+
+.s-sidebar__nav-link:hover {
+  background: var(--color-primary-2);
+  /* opacity: 0.8; */
+  color: #f3f4f6 !important;
+}
+
+.s-sidebar__nav-link > i {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: inline-block;
+  width: 4em;
+  height: 4em;
+}
+
+.s-sidebar__nav-link > i::before {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Mobile First */
+@media (min-width: 42em) {
+  .s-layout__content {
+    margin-left: 4em;
+  }
+  .s-sidebar__trigger {
+    width: 4em;
+  }
+
+  .s-sidebar__nav {
+    width: 4em;
+    left: 0;
+  }
+
+  .s-sidebar__nav:hover,
+  .s-sidebar__nav:focus,
+  .s-sidebar__trigger:hover + .s-sidebar__nav,
+  .s-sidebar__trigger:focus + .s-sidebar__nav {
+    width: 15em;
+  }
+}
+
+@media (min-width: 68em) {
+  .s-layout__content {
+    margin-left: 15em;
+  }
+
+  /* Sidebar */
+  .s-sidebar__trigger {
+    display: none;
+  }
+
+  .s-sidebar__nav {
+    width: 15em;
+  }
+
+  .s-sidebar__nav ul {
+    top: 1.3em;
+  }
+}
