@@ -162,3 +162,50 @@ main {
     top: 1.3em;
   }
 }
+
+/* Order Data */
+.order-data-card {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+.order-data {
+  padding: 2rem 1rem 2rem 1rem;
+  height: 170px;
+  width: 320px;
+  border-radius: 10px;
+}
+.order-data div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.order-data p {
+  text-align: center;
+  font-size: 3rem;
+  font-family: "Poppins";
+}
+
+.order-data div h4 {
+  font-family: "Nunito";
+  font-weight: bold;
+  font-size: 1.8rem;
+  margin-left: 1rem;
+}
+.order-data div i {
+  font-size: 1.5rem;
+  margin-top: -0.5rem;
+}
+.order-delivered {
+  background-color: #e5fbe5;
+}
+.order-pending {
+  background-color: #fbe5fb;
+}
+.order-total {
+  background-color: #cfcff8;
+}
+.op-i {
+  font-style: 2rem !important;
+}
