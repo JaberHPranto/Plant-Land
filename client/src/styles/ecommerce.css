@@ -206,6 +206,11 @@ main {
 .order-total {
   background-color: #cfcff8;
 }
-.op-i {
-  font-style: 2rem !important;
+.order-data-table {
+  margin-top: 4rem !important;
+}
+.odt-heading {
+  font-family: "Poppins";
+  font-size: 1.9rem !important;
+  margin-bottom: 1rem;
 }

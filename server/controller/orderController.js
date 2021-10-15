@@ -69,8 +69,8 @@ const getOrderData = async (req, res) => {
 
     const customerBuyData = []
     for (let cb of customerBuy) {
-      const { name } = await User.findById(cb._id)
-      customerBuyData.push({ customer: name, total: cb.total })
+      const { name,email } = await User.findById(cb._id)
+      customerBuyData.push({ customer_email: email, customer_name: name, total: cb.total })
     }
 
     const totalOrder = await Order.countDocuments()
@@ -78,7 +78,7 @@ const getOrderData = async (req, res) => {
     const totalDelivered = await Order.find({ isDelivered: true }).countDocuments()
   
 
-    // console.log(productSale);
+    // console.log(productSaleData);
     // console.log("--------");
     // console.log(customerBuyData);
 
