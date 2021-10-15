@@ -214,3 +214,14 @@ main {
   font-size: 1.9rem !important;
   margin-bottom: 1rem;
 }
+.sale-dw-info .dropdown .dropdown-toggle {
+  background-color: #00c073 !important;
+}
+.sale-month-wise {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+.sale-month-wise h2 {
+  font-family: "Nunito";
+}
