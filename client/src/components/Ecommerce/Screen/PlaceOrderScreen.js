@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Button, Card, Col, Image, ListGroup, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
@@ -13,18 +13,16 @@ const PlaceOrderScreen = ({ history }) => {
   const cart = useSelector((state) => state.cart);
 
   const orderCreate = useSelector((state) => state.orderCreate);
-  const { error } = orderCreate;
+  const { order,success,error } = orderCreate;
 
-  // useEffect(() => {
-  //   if (success) {
-  //     // history.push(`/order/${order._id}`);
-  //     // history.push("/order")
-  //   }
-  //   // eslint-disable-next-line
-  // }, [history, success]);
+  useEffect(() => {
+    if (success) {
+      history.push(`/order/${order._id}`);
+    }
+    // eslint-disable-next-line
+  }, [history, success]);
 
   const placeOrderHandler = () => {
-    console.log(cart.cartItems);
 
     dispatch(
       createOrder({

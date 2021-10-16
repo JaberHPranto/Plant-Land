@@ -27,6 +27,7 @@ export const fetchProducts = (keyword='',pageNumber='',category='',sort='') => a
 // @ GET one product
 export const fetchProductById = (id) => async (dispatch) => {
     try {
+       
         dispatch({ type: PRODUCT_DETAILS_REQUEST })
 
         const { data } = await axios.get(`/api/products/${id}`)

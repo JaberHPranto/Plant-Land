@@ -14,6 +14,7 @@ import HomeScreen from '../components/Ecommerce/Screen/HomeScreen';
 import LoginScreen from '../components/Ecommerce/Screen/LoginScreen';
 import OrderDataScreen from "../components/Ecommerce/Screen/OrderDataScreen";
 import OrderListScreen from "../components/Ecommerce/Screen/OrderListScreen";
+import OrderScreen from "../components/Ecommerce/Screen/OrderScreen";
 import PasswordResetScreen from '../components/Ecommerce/Screen/PasswordResetScreen';
 import PaymentScreen from "../components/Ecommerce/Screen/PaymentScreen";
 import PlaceOrderScreen from "../components/Ecommerce/Screen/PlaceOrderScreen";
@@ -58,10 +59,12 @@ function MainPage() {
           <Route path="/admin/saleData" component={SaleDataScreen} />
           <Route path="/admin/product/:id/edit" component={ProductEditScreen} />
           <Route path="/product/:id" component={ProductScreen} />
+          <Route path="/order/:id" component={OrderScreen} />
           <Route path="/cart/:id?" component={CartScreen} />
           <Route path="/shipping" component={ShippingScreen} />
           <Route path="/placeorder" component={PlaceOrderScreen} />
           <Route path="/payment" component={PaymentScreen} />
+
         </Container>
         {/* Blog Routes */}
         <Route path="/blog" exact component={Blog} />

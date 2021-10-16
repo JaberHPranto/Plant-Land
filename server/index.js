@@ -34,7 +34,9 @@ app.use("/api/users", userRoutes);
 app.use("/api/orders", orderRoutes);
 app.use("/api/uploads", uploadRoutes);
 app.use("/api/blogs", blogRoutes);
-app.use("/api/identify-plant",plantIdentifyRoutes)
+app.use("/api/identify-plant", plantIdentifyRoutes)
+
+app.get("/api/config/paypal",(req,res)=>res.send(process.env.PAYPAL_CLIENT_ID))
 
 // static folder
 const __dirname = path.resolve()

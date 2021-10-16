@@ -66,7 +66,7 @@ function Feature() {
     <Container className={classes.gridContainer}>
       <Grid container spacing={5} elevate={3} >
         {data.map(d => (
-          <Grid item xs={12} sm={6} md={4}>
+          <Grid item xs={12} sm={6} md={4} key={d.title}>
             <FeatureCard title={d.title} text={d.text} image={d.image}/>
           </Grid>
         ))}  

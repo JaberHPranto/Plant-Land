@@ -48,6 +48,44 @@ const getOrders = asyncHandler(async (req, res) => {
   res.json(orders)
 })
 
+// @desc    get all orders
+// @route   POST /api/orders/:id
+// @access  Private/Admin
+const getOrderById = asyncHandler(async (req, res) => {
+  const order = await Order.findById(req.params.id).populate('user', 'name email')
+  if (order) {
+    res.json(order)
+  } else {
+    res.status(404)
+    throw new Error("Order not found")
+  }
+})
+
+// @desc    get all orders
+// @route   POST /api/orders/:id/pay
+// @access  Private/Admin
+const updateOrderToPaid = asyncHandler(async (req, res) => {
+  const order = await Order.findById(req.params.id)
+  if (order) {
+    order.isPaid = true;
+    order.paidAt = Date.now()
+    order.paymentResult={
+      id: req.body.id,
+      status: req.body.status,
+      updateTime: req.body.update_time,
+      emailAddress: req.body.payer.email_address,
+    }
+
+    const updatedOrder = await order.save()
+
+    res.json(updatedOrder)
+
+  } else {
+    res.status(404)
+    throw new Error("Order not found")
+  }
+})
+
 
 
 const getOrderData = async (req, res) => {
@@ -262,5 +300,5 @@ const saleByAProduct = asyncHandler(async (req, res) => {
 
 })
 
-export { addOrderItems, getOrders, getOrderData, getSaleDataByYear, getSaleDataByMonth, saleByAProduct };
+export { addOrderItems, getOrders, getOrderData, getSaleDataByYear, getSaleDataByMonth, saleByAProduct, getOrderById, updateOrderToPaid };
 
