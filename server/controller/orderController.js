@@ -110,17 +110,19 @@ const getSaleDataByYear = async (req, res) => {
       saleDataByMonths.push({ month, totalOrder: saleByMonth, numOfOrder: saleByMonth.length })
     }
 
+
     // New 
-    const dd = new Date(new Date().getTime() - 1000 * 60 * 60 * 24 * 120).toISOString()
+    const numOfDays = 120
+    const dd = new Date(new Date().getTime() - 1000 * 60 * 60 * 24 * numOfDays).toISOString()
     
-    // console.log(dd.substring(0,10))
+    console.log(dd.substring(0,10))
     const test = [
    // Get only records created in the last 30 days
    {
       $match: {
          "createdAt": {
-            // $gte: new Date(`${dd}`)
-           $gte: new Date(`${year}-07-01`), $lt: new Date(`${year}-07-31`)
+            $gte: new Date(`${dd.substring(0,10)}`)
+          //  $gte: new Date(`${year}-07-01`), $lt: new Date(`${year}-07-31`)
          }
       }
    },
@@ -141,12 +143,14 @@ const getSaleDataByYear = async (req, res) => {
     ]
 
 
-    const dayCount = await Order.aggregate(test)
-    const dayWiseSale = new Array(30).fill(0)
-    
-    for (let i of dayCount) {
-      dayWiseSale[i.day]=dayWiseSale[i.day]+1
-    }
+    // const dayCount = await Order.aggregate(test)
+    // console.log(dayCount)
+    // console.log(dayCount.length)
+
+    // const dayWiseSale = new Array(30).fill(0)
+    // for (let i of dayCount) {
+    //   dayWiseSale[i.day]=dayWiseSale[i.day]+1
+    // }
   
 
     return res.status(200).json(saleDataByMonths)

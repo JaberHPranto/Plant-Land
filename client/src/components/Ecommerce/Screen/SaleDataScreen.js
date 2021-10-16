@@ -8,6 +8,8 @@ import BarChart from '../Charts/BarChart';
 import LineChart from '../Charts/LineChart';
 import MonthBarChart from '../Charts/MonthBarChart';
 import ProductSaleBarChart from '../Charts/ProductSaleBarChart';
+import SalesPieChart from '../Charts/SalesPieChart';
+import CSVReportGeneration from '../CSVReportGeneration';
 import { monthData } from "../EcommSeedData";
 import SaleDataCategory from '../SaleDataCategory';
 import Sidebar from '../Sidebar';
@@ -18,14 +20,14 @@ function SaleDataScreen({ history }) {
     const [monthSale, setMonthSale] = useState("")
     const [productSale, setProductSale] = useState("")
     const [search, setSearch] = useState("")
+    const [reportData, setReportData] = useState("")
+    const [salesPieData, setSalesPieData] = useState("")
 
     const dispatch = useDispatch()
     const { userInfo: { user,token } } = useSelector(state => state.userLogin)
 
     const order = useSelector(state => state.orderSaleData)
-    const { loading, error, orderSaleData } = order
-
-    // if (orderSaleData) console.log(orderSaleData)
+    const { orderSaleData } = order
 
 
     useEffect(() => {
@@ -38,7 +40,38 @@ function SaleDataScreen({ history }) {
     
     const handleSelect = (e) => {
         setGraphType(e)
-       
+    }
+
+    const onSalesMonthSelect = (e) => {
+        const { totalOrder } = orderSaleData?.find(el => el.month === e)
+        const saleData = []
+        const salesPieData = []
+
+        for (let data of totalOrder) {
+            for (let pd of data.orderedItems) {
+                const date = data.createdAt.substring(0, 10);
+                const product_id = pd._id;
+                const product_name = pd.name;
+                const product_price = pd.price;
+                const product_qty = pd.qty;
+                const total = pd.price * pd.qty
+                saleData.push({ date, product_id, product_name, product_price, product_qty, total })
+
+                // for pie chart
+                salesPieData.push({ name: product_name, value: total })
+                
+            }
+        }
+
+        // console.log(salesPieData);
+
+        // for pie chart
+        const res = Array.from(salesPieData.reduce(
+            (m, { name, value }) => m.set(name, (m.get(name) || 0) + value), new
+            Map()), ([name, value]) => ({ name, value }));
+        
+        setSalesPieData(res)
+        setReportData(saleData)
     }
 
     const onMonthSelect = async (e) => {
@@ -52,7 +85,6 @@ function SaleDataScreen({ history }) {
             }
         }
              const { data } = await axios.post(`/api/orders/saleDataByMonth`, { selectedMonth }, config)
-
              setMonthSale(data)
             
         } catch (error) {
@@ -72,7 +104,6 @@ function SaleDataScreen({ history }) {
             }
         }
              const { data } = await axios.post(`/api/orders/saleByAProduct`, {product_id:search }, config)
-            console.log(data);
             setProductSale(data)
             
         } catch (error) {
@@ -121,7 +152,20 @@ function SaleDataScreen({ history }) {
                                 <Button className="bg-col-primary" type="submit" >Search</Button>
                             </Form>
                         </div>
-                            {productSale && <ProductSaleBarChart monthWiseQty={productSale.monthWiseQty} productName={productSale.productName} />}
+                        {productSale && <ProductSaleBarChart monthWiseQty={productSale.monthWiseQty} productName={productSale.productName} />}
+                        
+                        <div className="sales-report">
+                            <h3 className='sale-day-heading'>Sales Report Generation</h3>
+                            <SaleDataCategory onSelect={onSalesMonthSelect} data={monthData} />
+                            {reportData && <CSVReportGeneration data={reportData} />}
+                            {salesPieData &&
+                                <div>
+                                <h4 className='pie-heading'>Contribution of sold products</h4>
+                                <SalesPieChart pie_data={salesPieData} />
+                                </div>
+                            }
+                        </div>
+
                         
                     </>
                 </Col>

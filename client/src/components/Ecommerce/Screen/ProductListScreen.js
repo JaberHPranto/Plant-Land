@@ -79,15 +79,17 @@ function ProductListScreen({history}) {
                                 
                                 <thead>
                                     <tr>
-                                    <th>Name</th>
-                                    <th>Price</th>
-                                    <th>Category</th>
-                                    <th>In Stock</th>
+                                        <th>Product ID</th>    
+                                        <th>Name</th>
+                                        <th>Price</th>
+                                        <th>Category</th>
+                                        <th>In Stock</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     {products.map(product=>(
                                         <tr key={product._id}>
+                                            <td>{product._id}</td>
                                             <td>{product.name}</td>
                                             <td><span style={{fontSize:'1.5rem',marginRight:'0.1rem'}}>৳</span>&nbsp;{product.price}</td>
                                             <td>{product.category}</td>

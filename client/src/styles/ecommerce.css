@@ -243,3 +243,8 @@ main {
   min-width: 33% !important;
   margin-top: 1.5rem;
 }
+.pie-heading {
+  text-align: center;
+  font-family: "Poppins";
+  margin: 0.5rem 0 2rem 0;
+}
