@@ -1,5 +1,6 @@
 import asyncHandler from "express-async-handler";
 import Order from "../models/orderModel.js";
+import Product from "../models/productModel.js";
 import User from "../models/userModel.js";
 
 // @desc    Create new order
@@ -31,7 +32,7 @@ const addOrderItems = asyncHandler(async (req, res) => {
       totalPrice,
     });
 
-    console.log(order.orderItems);
+    // console.log(order.orderItems);
 
     const createdOrder = await order.save();
 
@@ -46,6 +47,8 @@ const getOrders = asyncHandler(async (req, res) => {
   const orders = await Order.find({}).populate('user', '_id name')
   res.json(orders)
 })
+
+
 
 const getOrderData = async (req, res) => {
   try {
@@ -82,6 +85,8 @@ const getOrderData = async (req, res) => {
     // console.log("--------");
     // console.log(customerBuyData);
 
+
+
     res.status(200).json({ productSaleData, customerBuyData, totalOrder, totalPaidOrder, totalDelivered })
 
   }catch(err){
@@ -108,13 +113,14 @@ const getSaleDataByYear = async (req, res) => {
     // New 
     const dd = new Date(new Date().getTime() - 1000 * 60 * 60 * 24 * 120).toISOString()
     
-    console.log(dd.substring(0,10))
+    // console.log(dd.substring(0,10))
     const test = [
    // Get only records created in the last 30 days
    {
       $match: {
          "createdAt": {
-            $gte: new Date(`${dd}`)
+            // $gte: new Date(`${dd}`)
+           $gte: new Date(`${year}-07-01`), $lt: new Date(`${year}-07-31`)
          }
       }
    },
@@ -131,16 +137,16 @@ const getSaleDataByYear = async (req, res) => {
             $dayOfMonth: "$createdAt"
          }
       }
-   },
+      }
     ]
 
 
     const dayCount = await Order.aggregate(test)
-    // for (let i of dayCount) {
-    //   if()
-    // }
-
-    // console.log(dayCount);
+    const dayWiseSale = new Array(30).fill(0)
+    
+    for (let i of dayCount) {
+      dayWiseSale[i.day]=dayWiseSale[i.day]+1
+    }
   
 
     return res.status(200).json(saleDataByMonths)
@@ -151,5 +157,106 @@ const getSaleDataByYear = async (req, res) => {
   }
 }
 
-export { addOrderItems, getOrders, getOrderData, getSaleDataByYear };
+
+const getSaleDataByMonth = async (req, res) => {
+  try {
+    
+    const { selectedMonth } = req.body
+    let month_no=1;
+    let numOfDays=30;
+    const year = 2021;
+  
+    if (selectedMonth === 'jan') { month_no = 1, numOfDays = 31 }
+    else if (selectedMonth === 'feb') { month_no = 2, numOfDays = 28 }
+    else if (selectedMonth === 'mar') { month_no = 3, numOfDays = 31 }
+    else if (selectedMonth === 'apr') { month_no = 4, numOfDays = 30 }
+    else if (selectedMonth === 'may') { month_no = 5, numOfDays = 31 }
+    else if (selectedMonth === 'jun') { month_no = 6, numOfDays = 30 }
+    else if (selectedMonth === 'jul') { month_no = 7, numOfDays = 31 }
+    else if (selectedMonth === 'aug') { month_no = 8, numOfDays = 31 }
+    else if (selectedMonth === 'sep') { month_no = 9, numOfDays = 30 }
+    else if (selectedMonth === 'oct') { month_no = 10, numOfDays = 31 }
+    else if (selectedMonth === 'nov') { month_no = 11, numOfDays = 30 }
+    else if (selectedMonth === 'dec') { month_no = 12, numOfDays = 31 }
+
+
+    const saleByMonth = [
+   {
+      $match: {
+         "createdAt": {
+           $gte: new Date(`${year}-0${month_no}-01`), $lt: new Date(`${year}-0${month_no}-${numOfDays}`)
+         }
+      }
+   },
+   {
+      $project: {
+         "year": {
+            $year: "$createdAt"
+         },
+         "month": {
+            $month: "$createdAt"
+         },
+         "day": {
+            $dayOfMonth: "$createdAt"
+         }
+      }
+      }
+    ]
+
+    const dayCount = await Order.aggregate(saleByMonth)
+    const dayWiseSale = new Array(numOfDays).fill(0)
+    
+    for (let i of dayCount) {
+      dayWiseSale[i.day]=dayWiseSale[i.day]+1
+    }
+
+    // console.log(dayWiseSale);
+
+    res.status(200).json(dayWiseSale)
+
+  }catch (err) {
+    console.log(err);
+    return res.status(500).json({ error: "Server Error"})
+  }
+}
+
+const saleByAProduct = asyncHandler(async (req, res) => {
+  const { product_id } = req.body
+  const productQtyData = []
+  let productName="";
+  let productPrice="";
+
+  try {
+    const productData = await Order.find({ "orderedItems.productId": product_id })
+    if (productData.length) {
+      const selectedProduct = await Product.findById(product_id)
+      productName = selectedProduct.name
+      productPrice = selectedProduct.price
+      for (let pd of productData) {
+        const p_qty = pd.orderedItems[0].qty
+        const month_no = pd.createdAt.getMonth()
+        productQtyData.push({p_qty,month_no})
+      }
+    }
+
+    
+    const monthWiseQty = new Array(12).fill(0)
+    for (let i of productQtyData){
+      monthWiseQty[i.month_no] += i.p_qty
+    }
+    // console.log(monthWiseQty);
+    // console.log(productName);
+    // console.log(productPrice);
+
+    return res.status(200).json({productName,productPrice,monthWiseQty})
+    
+  } catch (err) {
+    console.log(err);
+    // return res.status(500).json({ error: "Server Error"})
+    throw new Error("Provide valid id")
+  }
+
+})
+
+export { addOrderItems, getOrders, getOrderData, getSaleDataByYear, getSaleDataByMonth, saleByAProduct };
 

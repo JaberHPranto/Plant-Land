@@ -224,4 +224,22 @@ main {
 }
 .sale-month-wise h2 {
   font-family: "Nunito";
+  font-weight: bold;
+}
+.sale-day-heading {
+  font-family: "Nunito";
+  margin: 3rem 0 1rem 0;
+  font-weight: bold;
+}
+.sale-product {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 3rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.sale-product-form {
+  height: 3rem !important;
+  min-width: 33% !important;
+  margin-top: 1.5rem;
 }
