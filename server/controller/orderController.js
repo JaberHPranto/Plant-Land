@@ -86,6 +86,37 @@ const updateOrderToPaid = asyncHandler(async (req, res) => {
   }
 })
 
+// @desc    get all orders
+// @route   POST /api/orders/:id/deliver
+// @access  Private/Admin
+const updateOrderToDelivered = asyncHandler(async (req, res) => {
+  const order = await Order.findById(req.params.id)
+  if (order) {
+    order.isDelivered = true;
+    order.deliverAt = Date.now()
+
+    const updatedOrder = await order.save()
+
+    res.json(updatedOrder)
+
+  } else {
+    res.status(404)
+    throw new Error("Order not found")
+  }
+})
+
+// @desc    get all orders
+// @route   POST /api/orders/my-orders
+// @access  Private/User
+const getMyOrders = asyncHandler(async (req, res) => {
+  const orders = await Order.find({ user: req.user._id })
+  if (orders) {
+    res.json(orders)
+  } else {
+    res.status(404)
+    throw new Error("No Order")
+  }
+})
 
 
 const getOrderData = async (req, res) => {
@@ -132,6 +163,7 @@ const getOrderData = async (req, res) => {
     res.status(401).json({error:"Something went wrong"})
   }
 }
+
 
 
 const getSaleDataByYear = async (req, res) => {
@@ -300,5 +332,5 @@ const saleByAProduct = asyncHandler(async (req, res) => {
 
 })
 
-export { addOrderItems, getOrders, getOrderData, getSaleDataByYear, getSaleDataByMonth, saleByAProduct, getOrderById, updateOrderToPaid };
+export { addOrderItems, getOrders, getOrderData, getSaleDataByYear, getSaleDataByMonth, saleByAProduct, getOrderById, updateOrderToPaid, getMyOrders, updateOrderToDelivered };
 

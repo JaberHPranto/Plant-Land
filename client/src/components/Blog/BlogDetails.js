@@ -31,10 +31,10 @@ function BlogDetails({match}) {
                             <p>Published in <span className='info-span'>{blog.category}</span></p>
                             <p>{blog.createdAt && new Date(blog.createdAt).toDateString()}</p>
                         </div>
-                        <div className='blog-card-icons blog-det-icons'>
+                        {/* <div className='blog-card-icons blog-det-icons'>
                             <i className="far fa-thumbs-up blog-det-like" aria-hidden="true"><span>&nbsp;5</span></i>
                             <i className="far fa-comments blog-det-comments" aria-hidden="true"><span>&nbsp;4</span></i>
-                        </div>
+                        </div> */}
                     </div>
                     
                     <div className='blog-det-desc'>

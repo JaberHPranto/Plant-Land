@@ -52,14 +52,14 @@ function OrderListScreen({history}) {
                                         <td>{order.createdAt.substring(0, 10)}</td>
                                         <td><span style={{fontSize:'1.5rem',marginRight:'0.1rem'}}>৳</span>&nbsp;{order.totalPrice}</td>               
                                         <td>
-                                            {order.isPaid ? order.paidAt.substring(0,10) : <Button variant='light' ><i className='fas fa-times' style={{color:'red'}}></i></Button>}
+                                            {order?.isPaid ? order.paidAt.substring(0,10) : <Button variant='light' ><i className='fas fa-times' style={{color:'red'}}></i></Button>}
                                         </td>
                                         <td>
-                                            {order.isDelivered ? order.deliveredAt.substring(0,10) : <Button variant='light' ><i className='fas fa-times' style={{color:'red'}}></i></Button>}
+                                            {order?.isDelivered ? order.deliverAt.substring(0,10) : <Button variant='light' ><i className='fas fa-times' style={{color:'red'}}></i></Button>}
                                         </td>
                                         <td>
                                             <LinkContainer to={`/order/${order._id}`}>
-                                                <Button className='bg-col-primary' >Details</Button>
+                                                <Button className='bg-col-primary btn-sm' >Details</Button>
                                             </LinkContainer>
                                         </td>                               
                                     </tr>

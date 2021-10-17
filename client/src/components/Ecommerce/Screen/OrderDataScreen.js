@@ -101,9 +101,9 @@ function OrderDataScreen({history}) {
                                             <tbody>
                                                 {orderData?.customerBuyData?.map(customer => (
                                                     <tr key={customer.customer_email}>
-                                                        <td>{ customer.customer_name}</td>
+                                                        <td>{customer.customer_name}</td>
                                                         <td>{customer.customer_email}</td>
-                                                        <td>{customer.total}</td>
+                                                        <td>{Math.ceil(customer.total)}</td>
                                                     </tr>
                                                 ))}
                                             </tbody>

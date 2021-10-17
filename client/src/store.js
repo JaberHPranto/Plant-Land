@@ -3,9 +3,7 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import thunk from "redux-thunk";
 import { blogDetailsReducer, blogListReducer } from "./redux/reducers/blogReducers";
 import { cartReducer } from "./redux/reducers/cartReducers";
-import {
-  orderCreateReducer, orderDataReducer, orderDetailsReducer, orderListReducer, orderPayReducer, orderSaleDataReducer
-} from "./redux/reducers/orderReducers";
+import { myOrderListReducer, orderCreateReducer, orderDataReducer, orderDeliverReducer, orderDetailsReducer, orderListReducer, orderPayReducer, orderSaleDataReducer } from "./redux/reducers/orderReducers";
 import {
   productCreateReducer, productCreateReviewReducer, productDeleteReducer, productDetailsReducer,
   productListReducer, productUpdateReducer
@@ -36,7 +34,9 @@ const reducer = combineReducers({
   orderData: orderDataReducer,
   orderDetails:orderDetailsReducer,
   orderSaleData: orderSaleDataReducer,
-  orderPay:orderPayReducer,
+  orderPay: orderPayReducer,
+  orderDeliver: orderDeliverReducer,
+  myOrderList:myOrderListReducer,
   blogList: blogListReducer,
   blogDetails: blogDetailsReducer
 });
