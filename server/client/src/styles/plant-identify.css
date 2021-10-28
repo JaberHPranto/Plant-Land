@@ -1,0 +1,109 @@
+.pi-form {
+  display: flex;
+  justify-content: center;
+  margin-top: 2.5rem;
+  margin-bottom: 2rem;
+}
+.pi-mainImg img {
+  width: 20%;
+}
+.pi-mainImg {
+  margin: 2rem auto;
+  display: flex;
+  justify-content: center;
+  padding-bottom: 2rem;
+}
+.pi-col-2 {
+  margin-left: -2rem;
+  padding-top: 1.5rem !important;
+}
+.pi-col-2-info {
+  display: flex;
+  align-items: center;
+}
+.pi-col-2-info a i {
+  color: rgba(0, 158, 96, 0.9);
+  margin-left: 1rem;
+  cursor: pointer;
+  font-size: 1.2rem;
+  margin-top: 0.8rem !important;
+}
+.pi-plants {
+  width: 80%;
+  margin: 0 auto !important;
+}
+.pi-plants > * {
+  background-color: #f3f4f6;
+  margin-bottom: 1.5rem;
+  padding: 1.2rem;
+}
+
+.pi-plants-img {
+  display: flex;
+  width: 80%;
+  margin-left: -4.2rem;
+}
+.pi-plants-info {
+  display: flex;
+  justify-content: center;
+}
+.pi-plants-img img:not(:last-child) {
+  margin-right: 1.5rem !important;
+}
+.pi-plants-img img {
+  width: 50%;
+}
+.pi-probability {
+  height: 6rem;
+  width: 6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2.2rem;
+  border-radius: 50%;
+  background-color: rgba(0, 158, 96, 0.9);
+  outline: 4px solid white;
+}
+.pi-probability p {
+  color: #f3f4f6;
+  font-size: 1.3rem;
+  font-family: "Poppins" !important;
+  margin-top: 1rem;
+}
+.pi-name {
+  font-size: 1.9rem;
+  font-family: "Nunito";
+  font-weight: bold;
+}
+.pi-card-info div span {
+  font-weight: bold;
+  font-size: 1.1rem;
+  margin-right: 0.3rem;
+  font-family: "Nunito";
+}
+.pi-card-info div {
+  font-size: 1.25rem;
+  font-family: "Nunito";
+}
+.pi-modal-btn {
+  font-size: 0.9rem !important;
+  margin-top: 0.6rem;
+}
+.pi-mt {
+  font-size: 1.6rem !important;
+}
+.pi-mb h5 {
+  font-family: "Poppins";
+}
+.pi-mb-tax div,
+.pi-mb-syn,
+.pi-mb-cn,
+.pi-mb-desc {
+  font-family: "Poppins";
+}
+.pi-mb-tax div span {
+  font-style: italic;
+  font-weight: bold;
+  font-family: "Nunito" !important;
+  margin-right: 0.3rem;
+}
