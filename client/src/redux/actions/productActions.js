@@ -1,12 +1,14 @@
 import axios from 'axios';
 import { PRODUCT_CREATE_FAIL, PRODUCT_CREATE_REQUEST, PRODUCT_CREATE_REVIEW_FAIL, PRODUCT_CREATE_REVIEW_REQUEST, PRODUCT_CREATE_REVIEW_SUCCESS, PRODUCT_CREATE_SUCCESS, PRODUCT_DELETE_FAIL, PRODUCT_DELETE_REQUEST, PRODUCT_DELETE_SUCCESS, PRODUCT_DETAILS_FAIL, PRODUCT_DETAILS_REQUEST, PRODUCT_DETAILS_SUCCESS, PRODUCT_LIST_FAIL, PRODUCT_LIST_REQUEST, PRODUCT_LIST_SUCCESS, PRODUCT_UPDATE_FAIL, PRODUCT_UPDATE_REQUEST, PRODUCT_UPDATE_SUCCESS } from '../../constants/productConstants';
 
+const baseUrl = 'https://plantland.herokuapp.com'
+
 // @ GET products
 export const fetchProducts = (keyword='',pageNumber='',category='',sort='') => async (dispatch) => {
     try {
         dispatch({ type: PRODUCT_LIST_REQUEST })
 
-        const { data } = await axios.get(`/api/products?category=${category}&keyword=${keyword}&pageNumber=${pageNumber}&sort=${sort}`)
+        const { data } = await axios.get(`${baseUrl}/api/products?category=${category}&keyword=${keyword}&pageNumber=${pageNumber}&sort=${sort}`)
 
         dispatch({
             type: PRODUCT_LIST_SUCCESS,
@@ -30,7 +32,7 @@ export const fetchProductById = (id) => async (dispatch) => {
        
         dispatch({ type: PRODUCT_DETAILS_REQUEST })
 
-        const { data } = await axios.get(`/api/products/${id}`)
+        const { data } = await axios.get(`${baseUrl}/api/products/${id}`)
         dispatch({
             type: PRODUCT_DETAILS_SUCCESS,
             payload: data
@@ -60,7 +62,7 @@ export const createProductReview = (productId,review) => async (dispatch,getStat
             }
         }
 
-        await axios.post(`/api/products/${productId}/reviews`,review,config)
+        await axios.post(`${baseUrl}/api/products/${productId}/reviews`,review,config)
 
         dispatch({
             type: PRODUCT_CREATE_REVIEW_SUCCESS,
@@ -95,7 +97,7 @@ export const deleteProduct = (id) => async (dispatch,getState) => {
             }
         }
 
-        await axios.delete(`/api/products/${id}`,config)
+        await axios.delete(`${baseUrl}/api/products/${id}`,config)
 
         dispatch({
             type: PRODUCT_DELETE_SUCCESS,

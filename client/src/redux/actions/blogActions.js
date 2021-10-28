@@ -2,12 +2,13 @@ import axios from "axios"
 import { BLOG_DETAILS_REQUEST, BLOG_DETAILS_SUCCESS, BLOG_FETCH_FAIL, BLOG_FETCH_REQUEST, BLOG_FETCH_SUCCESS } from "../../constants/blogConstant"
 import { PRODUCT_DETAILS_FAIL } from "../../constants/productConstants"
 
+const baseUrl = 'https://plantland.herokuapp.com'
 // @ GET blogs
 export const fetchBlogs = () => async (dispatch) => {
     try {
         dispatch({ type:BLOG_FETCH_REQUEST})
 
-        const { data } = await axios.get(`/api/blogs`)
+        const { data } = await axios.get(`${baseUrl}/api/blogs`)
 
         dispatch({
             type: BLOG_FETCH_SUCCESS,
@@ -28,7 +29,7 @@ export const fetchBlogById = (id) => async (dispatch) => {
     try {
         dispatch({ type: BLOG_DETAILS_REQUEST })
 
-        const { data } = await axios.get(`/api/blogs/${id}`)
+        const { data } = await axios.get(`${baseUrl}/api/blogs/${id}`)
         dispatch({
             type: BLOG_DETAILS_SUCCESS,
             payload: data
@@ -62,7 +63,7 @@ export const createBlog = (blogData) => async (dispatch,getState) => {
             }
         }
 
-        const { data } = await axios.post(`/api/blogs`,blogData,config)
+        const { data } = await axios.post(`${baseUrl}/api/blogs`,blogData,config)
 
         console.log(data);
         // dispatch({
