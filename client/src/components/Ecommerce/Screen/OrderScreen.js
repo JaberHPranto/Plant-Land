@@ -9,6 +9,8 @@ import { deliverOrder, getOrderDetails, payOrder } from "../../../redux/actions/
 import Loader from "../Loader";
 import Message from "../Message";
 
+const baseUrl = 'https://plantland.herokuapp.com'
+
 const OrderScreen = ({ match,history }) => {
 
     const orderId = match.params.id
@@ -48,7 +50,7 @@ const OrderScreen = ({ match,history }) => {
         }
         
         const addPayPalScript = async (req, res) => {
-            const { data: clientId } = await axios.get('/api/config/paypal')
+            const { data: clientId } = await axios.get(`${baseUrl}/api/config/paypal`)
             console.log(clientId);
 
             const script = document.createElement('script')
