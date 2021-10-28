@@ -24,9 +24,6 @@ app.use(express.json({ limit: "30mb", extended: true }));
 app.use(express.urlencoded({ limit: "30mb", extended: true }));
 app.use(cors());
 
-app.get("/", (req, res) => {
-  res.send("Hello world");
-});
 
 //routes
 app.use("/api/products", productRoutes);
@@ -41,6 +38,21 @@ app.get("/api/config/paypal",(req,res)=>res.send(process.env.PAYPAL_CLIENT_ID))
 // static folder
 const __dirname = path.resolve()
 app.use('/uploads', express.static(path.join(__dirname, './uploads')))
+
+// for production
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, '../client/build')))
+    app.get("*", (req, res) => {
+      res.sendFile(path.resolve(__dirname,'../','client', 'build', 'index.html'))
+  })
+}
+ else {
+  app.get("/", (req, res) => {
+    res.send("Hello world");
+  });
+}
+
+
 
 // error handler
 app.use(notFound);
