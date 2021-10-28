@@ -6,6 +6,8 @@ import "../../styles/plant-identify.css";
 import Loader from "../Ecommerce/Loader";
 import PIDetailsModal from './PIDetailsModal';
 
+const baseUrl = 'https://plantland.herokuapp.com'
+
 function PlantIdentify() {
     const [file, setFile] = useState()
     const [imageUrl, setImageUrl] = useState("")
@@ -20,7 +22,7 @@ function PlantIdentify() {
 
     const getPlantInfo = async () => {
         try {
-            const {data} = await axios.post(`/api/identify-plant`, { file })
+            const {data} = await axios.post(`${baseUrl}/api/identify-plant`, { file })
             setImageUrl(data.imageUrl)
             setPlantSuggestion(data.plantSuggestions)
             setLoading(false)

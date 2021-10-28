@@ -13,6 +13,7 @@ import CSVReportGeneration from '../CSVReportGeneration';
 import { monthData } from "../EcommSeedData";
 import SaleDataCategory from '../SaleDataCategory';
 import Sidebar from '../Sidebar';
+const baseUrl = 'https://plantland.herokuapp.com'
 
 function SaleDataScreen({ history }) {
     
@@ -84,7 +85,7 @@ function SaleDataScreen({ history }) {
                 Authorization: `Bearer ${token}`
             }
         }
-             const { data } = await axios.post(`/api/orders/saleDataByMonth`, { selectedMonth }, config)
+             const { data } = await axios.post(`${baseUrl}/api/orders/saleDataByMonth`, { selectedMonth }, config)
              setMonthSale(data)
             
         } catch (error) {
@@ -103,7 +104,7 @@ function SaleDataScreen({ history }) {
                 Authorization: `Bearer ${token}`
             }
         }
-             const { data } = await axios.post(`/api/orders/saleByAProduct`, {product_id:search }, config)
+             const { data } = await axios.post(`${baseUrl}/api/orders/saleByAProduct`, {product_id:search }, config)
             setProductSale(data)
             
         } catch (error) {
